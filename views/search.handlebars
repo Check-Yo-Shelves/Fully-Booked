@@ -1,39 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Search</title>
-</head>
-
-<body>
-    <nav>
-        <ul>
-            <li><a href="#Home">Home</a></li>
-            <li><a href="#Browse">Browse</a></li>
-            <li><a href="#Login">Login</a></li>
-
-        </ul>
-    </nav>
-
-
-    <input type="text" id="userSearch"
-        class="w-1/3 my-2 border-solid border-2 border-black-600 rounded-lg shadow-sm focus:outline-none focus:border-blue-300 focus:ring-1"
-        placeholder="Search For Books">
-    <div id="buttons" class="w-full flex my-5 justify-center">
-        <button id="searchButton"
-            class="rounded-lg p-2 text-xl bg-[#4A476B] border-solid border-2 border-gray-900 text-white">
-            Search
-        </button>
-    </div>
-    </div>
-</body>
-
-</html> -->
-
 <!doctype html>
 <html lang="en">
 
@@ -50,16 +14,26 @@
 </head>
 
 <body>
-    
+
+
+
+
+ 
     <nav>
         <ul>
             <li><a href="#Home">Home</a></li>
             <li><a href="#Browse">Browse</a></li>
             <li><a href="#Login">Login</a></li>
+            {{#if logged_in}}
+            <li><button class="btn" id="logout">logout</button></li>
+            {{/if}}
 
         </ul>
     </nav>
 
+   {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 
     <input type="text" id="userSearch" placeholder="Search For Books">
     <div id="buttons">
@@ -68,12 +42,11 @@
         </button>
     </div>
 
-    <div>
-        <ul>
-            <li></li>
-        </ul>
-    </div>
 
+
+    <main class="container container-fluid mt-5">
+        {{{ body }}}
+    </main>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
