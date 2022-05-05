@@ -39,9 +39,18 @@ User.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
+        isNumeric: true,
         len: [5, 5],
       },
     },
+    // Placeholder for storing image urls for profile picture.
+    // image_url: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   validate: {
+    //     isUrl: true,
+    //   }
+    // },
   },
   {
     hooks: {
