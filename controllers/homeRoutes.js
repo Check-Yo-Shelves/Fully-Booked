@@ -38,15 +38,14 @@ router.get('/login', (req, res) => {
 router.get('/dashboard', withAuth async (req, res) => {
   try {
     // Get User's checked out books and owned libraries to display here.
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
+    const bookData = await Book.findAll({
+
     });
 
-    const users = userData.map((project) => project.get({ plain: true }));
+    const books = bookData.map((book) => book.get({ plain: true }));
 
-    res.render('homepage', {
-      users,
+    res.render('dashboard', {
+      books,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
