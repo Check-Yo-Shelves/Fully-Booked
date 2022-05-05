@@ -19,25 +19,25 @@ Book.init(
                 isNumeric: true,
             },
         },
-        title: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        author: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        artwork: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isUrl: true,
-            },
-        },
-        genre: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+        // title: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        // },
+        // author: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        // },
+        // artwork: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        //     validate: {
+        //         isUrl: true,
+        //     },
+        // },
+        // genre: {
+        //     type: DataTypes.STRING,
+        //     allowNull: false,
+        // },
         on_loan: {
             type: DataTypes.BOOLEAN,
             allowNull: false,

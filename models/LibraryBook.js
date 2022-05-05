@@ -25,6 +25,7 @@ LibraryBook.init(
                 key: 'id',
             },
         },
+        // Can I have a third column for a checked out book? Or do I not need this? Like, which user_id checked it out (can be null)
     },
     {
         sequelize,
