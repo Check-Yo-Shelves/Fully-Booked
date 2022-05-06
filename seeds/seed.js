@@ -8,12 +8,12 @@ const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
   await seedUser();
+  
+  await seedLibraryBooks();
 
   await seedLibrary();
 
   await seedBooks();
-
-  await seedLibraryBooks();
 
   process.exit(0);
 };
