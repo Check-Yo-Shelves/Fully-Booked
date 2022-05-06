@@ -35,17 +35,22 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/dashboard', withAuth async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Get User's checked out books and owned libraries to display here.
-    const bookData = await Book.findAll({
+    // const libraryData = await Library.findAll({
+    //   where: ,
+    // })
+    
+    // const bookData = await Book.findAll({
 
-    });
+    // });
 
-    const books = bookData.map((book) => book.get({ plain: true }));
+    // const books = bookData.map((book) => book.get({ plain: true }));
 
     res.render('dashboard', {
       books,
+      libraries,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
