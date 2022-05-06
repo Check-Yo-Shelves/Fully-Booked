@@ -13,7 +13,7 @@ Book.init(
             autoIncrement: true,
         },
         isbn: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 isNumeric: true,
@@ -38,26 +38,8 @@ Book.init(
         //     type: DataTypes.STRING,
         //     allowNull: false,
         // },
-        on_loan: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-        },
-        // This is the reference to the user who has checked out the book (borrower)
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
-        }
     },
     {
-        hooks: {
-            beforeCreate: async (newUserData) => {
-                newUserData.on_loan = false;
-                return newUserData;
-            },
-        },
         sequelize,
         timestamps: false,
         freezeTableName: true,

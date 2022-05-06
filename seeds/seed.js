@@ -9,11 +9,12 @@ const seedDatabase = async () => {
 
   await seedUser();
   
+  await seedLibrary();
+  
+  await seedBooks();
+  
   await seedLibraryBooks();
 
-  await seedLibrary();
-
-  await seedBooks();
 
   process.exit(0);
 };

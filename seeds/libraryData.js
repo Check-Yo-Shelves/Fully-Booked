@@ -27,6 +27,6 @@ const libraryData = [
     },
 ];
 
-const seedUser = () => Library.bulkCreate(libraryData);
+const seedLibrary = () => Library.bulkCreate(libraryData);
 
-module.exports = seedUser;
+module.exports = seedLibrary;
