@@ -3,6 +3,7 @@ const { User } = require('../../models');
 
 router.post('/login', async (req, res) => {
   try {
+    console.log('Login route OK')
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
@@ -35,6 +36,7 @@ router.post('/login', async (req, res) => {
 
 router.post(`/signup`, async (req, res) => {
   try {
+    console.log('Login route OK')
     const signupData = await User.create(req.body);
     res.status(200).json(signupData);
   } catch (err) {

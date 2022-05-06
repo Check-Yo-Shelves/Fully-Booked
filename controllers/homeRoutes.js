@@ -5,6 +5,7 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
   try {
     res.render('homepage');
+    console.log('Root route OK');
   } catch (err) {
     res.status(500).json(err);
   }
@@ -13,6 +14,7 @@ router.get('/', async (req, res) => {
 router.get('/browse', async (req, res) => {
   try {
     res.render('browse');
+    console.log('Browse route OK');
   } catch (err) {
     res.status(500).json(err);
   }
@@ -21,6 +23,7 @@ router.get('/browse', async (req, res) => {
 router.get('/search', async (req, res) => {
   try {
     res.render('search');
+    console.log('Search route OK');
   } catch (err) {
     res.status(500).json(err);
   }
@@ -29,6 +32,7 @@ router.get('/search', async (req, res) => {
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/dashboard');
+    console.log('Login route OK');
     return;
   }
 
