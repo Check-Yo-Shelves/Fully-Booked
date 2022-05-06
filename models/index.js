@@ -12,6 +12,15 @@ Library.belongsTo(User, {
     foreignKey: `user_id`,
 });
 
+User.hasMany(LibraryBook, {
+    foreignKey: `user_id`,
+    onDelete: `SET NULL`,
+});
+
+LibraryBook.belongsTo(User, {
+    foreignKey: `user_id`,
+})
+
 User.hasMany(Book, {
     foreignKey: `user_id`,
     onDelete: `SET NULL`,
@@ -21,20 +30,20 @@ Book.belongsTo(User, {
     foreignKey: `user_id`,
 });
 
-Book.belongsToMany(Library, {
-    through: {
-        model: LibraryBook,
-        unique: false
-    },
-    as: `books_library`
-});
+// Book.belongsToMany(Library, {
+//     through: {
+//         model: LibraryBook,
+//         unique: false
+//     },
+//     as: `books_library`
+// });
 
-Library.belongsToMany(Book, {
-    through: {
-        model: LibraryBook,
-        unique: false
-    },
-    as: `library_books`
-});
+// Library.belongsToMany(Book, {
+//     through: {
+//         model: LibraryBook,
+//         unique: false
+//     },
+//     as: `library_books`
+// });
 
 module.exports = { User, Library, Book, LibraryBook };
