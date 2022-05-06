@@ -2,16 +2,16 @@ const { Book } = require(`../models`);
 
 const bookData = [
     {
-        isbn: 0140328726,
+        isbn: "0140328726",
     },
     {
-        isbn: 0141369302,
+        isbn: "0141369302",
     },
     {
-        isbn: 0563380780,
+        isbn: "0563380780",
     },
     {
-        isbn: 0721409431,
+        isbn: "0721409431",
     }
 ];
 
