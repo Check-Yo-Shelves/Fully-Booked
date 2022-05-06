@@ -1,7 +1,7 @@
 const User = require('./User');
-const Library = require('./User');
-const LibraryBook = require('./User');
-const Book = require('./User');
+const Library = require('./Library');
+const LibraryBook = require('./LibraryBook');
+const Book = require('./Book');
 
 User.hasMany(Library, {
     foreignKey: `user_id`,
@@ -12,12 +12,12 @@ Library.belongsTo(User, {
     foreignKey: `user_id`,
 });
 
-User.hasMany(Book, {
+User.hasMany(LibraryBook, {
     foreignKey: `user_id`,
     onDelete: `SET NULL`,
 });
 
-Book.belongsTo(User, {
+LibraryBook.belongsTo(User, {
     foreignKey: `user_id`,
 });
 

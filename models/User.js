@@ -36,7 +36,7 @@ User.init(
       },
     },
     zip_code: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isNumeric: true,
@@ -54,7 +54,13 @@ User.init(
   },
   {
     hooks: {
-      beforeCreate: async (newUserData) => {
+      async beforeBulkCreate(newUserData) {
+        for (let i = 0; i < newUserData.length; i++) {
+          newUserData[i].password = await bcrypt.hash(newUserData[i].password, 10);
+        }
+        return newUserData;
+      },
+      async beforeCreate(newUserData) {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },

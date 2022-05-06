@@ -16,7 +16,7 @@ Library.init(
             allowNull: false,
         },
         zip_code: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 isNumeric: true,
@@ -41,7 +41,7 @@ Library.init(
                 isNumeric: true,
             },
         },
-        owner: {
+        owner_id: {
             type: DataTypes.INTEGER,
             allowNull: true,
             references: {
@@ -55,7 +55,7 @@ Library.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'user',
+        modelName: 'library',
     }
 )
 
