@@ -31,7 +31,7 @@ router.get('/search', async (req, res) => {
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('dashboard');
     console.log('Login route OK');
     return;
   }
@@ -53,8 +53,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
     // const books = bookData.map((book) => book.get({ plain: true }));
 
     res.render('dashboard', {
-      books,
-      libraries,
+      // books,
+      // libraries,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
