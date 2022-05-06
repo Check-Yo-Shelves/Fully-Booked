@@ -34,9 +34,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
+
 router.post(`/signup`, async (req, res) => {
   try {
-    console.log('Login route OK')
+    console.log('Signup route OK')
     const signupData = await User.create(req.body);
     res.status(200).json(signupData);
   } catch (err) {
@@ -45,6 +46,7 @@ router.post(`/signup`, async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
+  console.log("Logout route OK")
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
