@@ -19,13 +19,15 @@
       <button class="btn" id="logout">logout</button>
     </nav>
     {{/if}}
-    {{!-- add nav bar  --}}
+    {{> navbar}}
+
+    {{{body}}}
   </header>
   <main class="container container-fluid mt-5">
     {{{ body }}}
   </main>
   <footer>
-      {{!-- *Made by*  --}}
+    {{!-- *Made by* --}}
   </footer>
 
   {{#if logged_in}}
