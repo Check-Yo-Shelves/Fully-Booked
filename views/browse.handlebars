@@ -1,18 +1,20 @@
-<div class="container col pt-5">
-  <h1 class="text-left">Browse Libaries</h1>
-  <h6 class="text-left">Click on a library for more details.</h6>
-</div>
-<div class="browseResults container col pt-4">
-  <!-- Here's where our Get All Libraries results will live. -->
-  {{#each libraries as |library|}}
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{library.name}}</h5>
-        <p class="card-text">{{library.address}}</p>
+<div class="justify-center">
+  <div class="container col pt-5">
+    <h1 class="text-left">Browse Libaries</h1>
+    <h6 class="text-left">Click on a library for more details.</h6>
+  </div>
+  <div class="browseResults container col pt-4">
+    <!-- Here's where our Get All Libraries results will live. -->
+    {{#each libraries as |library|}}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{library.name}}</h5>
+          <p class="card-text">{{library.address}}</p>
+        </div>
+        <div class="card-body">
+          <button type="button">View Library Books</button>
+        </div>
       </div>
-      <div class="card-body">
-        <button type="button">View Library</button>
-      </div>
-    </div>
-  {{/each}}
+    {{/each}}
+  </div>
 </div>

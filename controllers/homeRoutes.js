@@ -16,10 +16,10 @@ router.get('/', async (req, res) => {
 router.get('/browse', async (req, res) => {
   try {
     const libraryData = await Library.findAll({
-      include: [{ model: Book, through: LibraryBook, as: "books_library"}]
+      include: [{ model: Book, through: LibraryBook, as: "books_library" }]
     });
     const libraries = libraryData.map((library => library.get({ plain: true })));
-    
+
     res.render('browse', { libraries });
     console.log('Browse route OK');
   } catch (err) {
@@ -49,10 +49,11 @@ router.get('/login', (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Get User's checked owned libraries to display here.
-    const userData = await User.findByPk(req.body.user_id, {
-      include: [ { model: Library }, { model: LibraryBook } ],
+    const userData = await User.findByPk(req.session.user_id, {
+      include: [{ model: Library }, { model: LibraryBook }],
+      exclude: ['password'],
     });
-    
+
     const user = userData.get({ plain: true });
     console.log(user);
 
