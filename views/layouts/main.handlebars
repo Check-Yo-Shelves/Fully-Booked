@@ -20,29 +20,29 @@
       {{! Add icon either before or after nav  }}
       <nav class="col-12 text-center">
         <button
-          onclick="location.href='./'"
+          onclick="location.href='/'"
           class="btn btn-primary"
           id="home"
         >Home</button>
         <button
-          onclick="location.href='./browse'"
+          onclick="location.href='/browse'"
           class="btn btn-primary"
           id="libraries"
         >Browse Libraries</button>
         <button
-          onclick="location.href='./search'"
+          onclick="location.href='/search'"
           class="btn btn-primary"
           id="search"
         >Search</button>
         {{#if logged_in}}
           <button class="btn btn-primary" id="logout">Logout</button>
           <button
-            onclick="location.href='./dashboard'"
+            onclick="location.href='/dashboard'"
             class="btn btn-primary"
             id="dashboard"
           >Dashboard</button>
         {{else}}
-          <button onclick="location.href='./login'" class="btn btn-primary" id="login">Login</button>
+          <button onclick="location.href='/login'" class="btn btn-primary" id="login">Login</button>
         {{/if}}
         {{!-- {{>search}} --}}
       </nav>

@@ -19,24 +19,23 @@ Book.init(
                 isNumeric: true,
             },
         },
-        // title: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        // },
-        // author: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        // },
-        // artwork: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        //     validate: {
-        //         isUrl: true,
-        //     },
-        // },
+        title: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        author: {
+            type: DataTypes.STRING,
+            // allowNull: false,
+        },
+        artwork: {
+            type: DataTypes.STRING,
+            // allowNull: false,
+            validate: {
+                isUrl: true,
+            },
+        },
         // genre: {
         //     type: DataTypes.STRING,
-        //     allowNull: false,
         // },
     },
     {

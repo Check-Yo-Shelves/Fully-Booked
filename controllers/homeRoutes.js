@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 router.get('/browse', async (req, res) => {
   try {
     const libraryData = await Library.findAll({
-      include: [{ model: Book, through: LibraryBook, as: "books_library" }]
+      include: [{ model: Book, through: LibraryBook, as: "books" }],
     });
     const libraries = libraryData.map((library => library.get({ plain: true })));
 
@@ -71,11 +71,12 @@ router.get('/libraryinfo/:id', async (req, res) => {
     // Get User's checked owned libraries to display here.
     const libraryData = await Library.findByPk(req.params.id,
       {
-        include: [{ model: Book, through: LibraryBook, as: 'books_library' }],
+        include: [{ model: Book, through: LibraryBook, as: 'books' }],
       });
 
     const library = libraryData.get({ plain: true });
     console.log(library);
+    // Add
 
     res.render('libraryinfo', { library });
   } catch (err) {
