@@ -2,10 +2,12 @@ const router = require('express').Router();
 const { User, Library, LibraryBook, Book } = require('../models');
 const withAuth = require('../utils/auth');
 
+// 
 router.get('/', async (req, res) => {
   try {
     res.render('homepage');
     console.log('Root route OK');
+    // Status
   } catch (err) {
     res.status(500).json(err);
   }
