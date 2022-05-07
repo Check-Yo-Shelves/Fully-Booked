@@ -6,7 +6,7 @@ const { Library, LibraryBook, Book, User } = require("../../models");
 router.get("/", async (req, res) => {
   try {
     const libraryData = await Library.findAll({
-      include: User,
+      include: [{User}],
     });
     res.status(200).json(libraryData);
   } catch (err) {
@@ -22,7 +22,7 @@ router.get("/zip", async (req, res) => {
       where: {
         zip_code: req.body.zip_code,
       },
-      include: User,
+      include: [{User}],
     });
     console.log(libraryData);
     // Cannot get the code to trigger this when entering a ZIP that is not in our database. -- BLOCKER
