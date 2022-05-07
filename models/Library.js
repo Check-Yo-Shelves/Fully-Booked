@@ -42,9 +42,8 @@ Library.init(
                 isNumeric: true,
             },
         },
-        owner_id: {
+        user_id: {
             type: DataTypes.INTEGER,
-            allowNull: false,
             references: {
                 model: 'user',
                 key: 'id',

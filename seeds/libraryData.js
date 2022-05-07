@@ -7,7 +7,7 @@ const libraryData = [
         address: "1234 Lake Shore Drive",
         lat: 41.921543,
         lon: -87.702484,
-        owner_id: 2,
+        user_id: 2,
     },
     {
         name: "Children's Library",
@@ -15,7 +15,7 @@ const libraryData = [
         address: "Lincoln Park Zoo",
         lat: 41.923250,
         lon: -87.649910,
-        owner_id: 2,
+        user_id: 2,
     },
     {
         name: "Jocat's Library",
@@ -23,7 +23,7 @@ const libraryData = [
         address: "1234 Milwaukee Ave",
         lat: 41.900589,
         lon: -87.679611,
-        owner_id: 4,
+        user_id: 4,
     },
     {
         name: "Andrew's TEST Library",
@@ -31,7 +31,7 @@ const libraryData = [
         address: "5678 N Western Ave",
         lat: 41.900589,
         lon: -87.679611,
-        owner_id: 1,
+        user_id: 1,
     },
 ];
 

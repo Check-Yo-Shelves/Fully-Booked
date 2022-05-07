@@ -29,7 +29,7 @@ LibraryBook.init(
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        borrower_id: {
+        user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',
