@@ -5,7 +5,10 @@ const { LibraryBook, User } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const libraryBookData = await LibraryBook.findAll({
-            include: [{ model: User }],
+            include: [{
+                model: User,
+                attributes: { exclude: ['password'] }
+              }],
         });
 
         res.status(200).json(libraryBookData);
@@ -18,7 +21,10 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const libraryBookData = await LibraryBook.findByPk(req.params.id, {
-            include: [{ model: User }],
+            include: [{
+                model: User,
+                attributes: { exclude: ['password'] }
+              }],
         });
 
         if (!libraryBookData) {

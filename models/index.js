@@ -26,7 +26,7 @@ Book.belongsToMany(Library, {
         model: LibraryBook,
         unique: false
     },
-    as: `books_library`
+    as: `library_book`
 });
 
 Library.belongsToMany(Book, {
@@ -34,7 +34,7 @@ Library.belongsToMany(Book, {
         model: LibraryBook,
         unique: false
     },
-    as: `library_books`
+    as: `books_library`
 });
 
 module.exports = { User, Library, Book, LibraryBook };

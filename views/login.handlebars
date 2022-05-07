@@ -1,55 +1,56 @@
 <h2>Login</h2>
 
-<form class="form login-form col-6">
-  <div class="form-group">
-    <label for="email-login">email:</label>
-    <input class="form-input" type="text" id="email-login" />
-  </div>
-  <div class="form-group">
-    <label for="password-login">password:</label>
-    <input class="form-input" type="password" id="password-login" />
-  </div>
-  <div class="form-group">
-    <button class="btn btn-primary" type="submit">login</button>
-  </div>
-</form>
-
-<div>
-
- <form action="action_page.php" style="border:1px solid #ccc">
-      <h1>Sign Up</h1>
-      <p>Please fill in this form to create an account.</p>
-      <hr>
-
-      <label id="zipcode" for="zipcode"><b>Zipcode</b></label>
-      <input type="text" placeholder="Enter Zipcode" name="zipcode" required>
-  
-      <label id="email" for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
-
-      <label id="name" for="name"><b>Name</b></label>
-      <input type="text" placeholder="Enter Name" name="name" required>
-  
-      <label id="password" for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-  
-      <label id="RP" for="pass-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-  
-      {{!-- <label>
-        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me --}}
-      </label>
-  
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-  
-      <div class="clearfix">
-        <button type="button" class="cancelbtn">Cancel</button>
-        <button type="submit" class="signupbtn">Sign Up</button>
-      </div>
+<div class="col-6">
+  <form class="form login-form">
+    <div class="form-group">
+      <label for="email-login">email:</label>
+      <input class="form-input" type="text" id="email-login" />
+    </div>
+    <div class="form-group">
+      <label for="password-login">password:</label>
+      <input class="form-input" type="password" id="password-login" />
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">login</button>
     </div>
   </form>
-
 </div>
+
+<div class="col-6">
+
+  <form class=" form signup-form" style="border:1px solid #ccc">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label id="zipcode" for="zipcode"><b>Zipcode</b></label>
+    <input type="text" placeholder="Enter Zipcode" name="zipcode" required>
+
+    <label id="email" for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label id="name" for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Name" name="name" required>
+
+    <label id="password" for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label id="RP" for="pass-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+    {{!-- <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me --}}
+    </label>
+
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+</form>
+</div>
+
 
 <script src="/js/login.js"></script>
 <script src="/public/js/signup.js"></script>

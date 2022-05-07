@@ -15,7 +15,12 @@ router.get('/', async (req, res) => {
 
 router.get('/browse', async (req, res) => {
   try {
-    res.render('browse');
+    const libraryData = await Library.findAll({
+      include: [{ model: Book, through: LibraryBook, as: "books_library"}]
+    });
+    const libraries = libraryData.map((library => library.get({ plain: true })));
+    
+    res.render('browse', { libraries });
     console.log('Browse route OK');
   } catch (err) {
     res.status(500).json(err);
