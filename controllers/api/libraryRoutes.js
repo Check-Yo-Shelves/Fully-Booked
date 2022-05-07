@@ -14,19 +14,20 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Distance search by latitude or longitude
+
 // Get libraries by ZIP (GET)
-// Cannot get the code to trigger this when entering a ZIP that is not in our database. -- BLOCKER
-router.get("/zip", async (req, res) => {
+// WORKS
+router.get("/:zip_code", async (req, res) => {
   try {
     const libraryData = await Library.findAll({
       where: {
-        zip_code: req.body.zip_code,
+        zip_code: req.params.zip_code,
       },
       include: [{ model: User }],
     });
     console.log(libraryData);
-    // Cannot get the code to trigger this when entering a ZIP that is not in our database. -- BLOCKER
-    if (!libraryData) {
+    if (!libraryData.length) {
       console.log("That aint it.");
       console.log(libraryData.zip_code);
       res
