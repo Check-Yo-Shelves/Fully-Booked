@@ -6,10 +6,7 @@ const { Library, LibraryBook, Book, User } = require("../../models");
 router.get("/", async (req, res) => {
   try {
     const libraryData = await Library.findAll({
-      include: User,
-      attributes: {
-        exclude: [`${User.password}`]
-    },
+      include: [{ model: User }],
     });
     res.status(200).json(libraryData);
   } catch (err) {
@@ -26,7 +23,7 @@ router.get("/:zip", async (req, res) => {
       where: {
         zip_code: req.params.zip_code,
       },
-      include: User,
+      include: [{ model: User }],
     });
     console.log(libraryData);
     if (!libraryData.length) {
