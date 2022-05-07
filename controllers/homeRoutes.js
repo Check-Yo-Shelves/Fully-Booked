@@ -44,11 +44,11 @@ router.get('/login', (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Get User's checked owned libraries to display here.
-    const userData = await User.findAll({
+    const userData = await User.findByPk(req.body.user_id, {
       include: [ { model: Library }, { model: LibraryBook } ],
     });
     
-    const user = userData.map((user) => user.get({ plain: true }));
+    const user = userData.get({ plain: true });
     console.log(user);
 
     res.render('dashboard', {

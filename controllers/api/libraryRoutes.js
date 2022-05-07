@@ -7,6 +7,9 @@ router.get("/", async (req, res) => {
   try {
     const libraryData = await Library.findAll({
       include: User,
+      attributes: {
+        exclude: [`${User.password}`]
+    },
     });
     res.status(200).json(libraryData);
   } catch (err) {
@@ -14,19 +17,19 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Distance search by lat and lon.
+
 // Get libraries by ZIP (GET)
-// Cannot get the code to trigger this when entering a ZIP that is not in our database. -- BLOCKER
-router.get("/zip", async (req, res) => {
+router.get("/:zip", async (req, res) => {
   try {
     const libraryData = await Library.findAll({
       where: {
-        zip_code: req.body.zip_code,
+        zip_code: req.params.zip_code,
       },
       include: User,
     });
     console.log(libraryData);
-    // Cannot get the code to trigger this when entering a ZIP that is not in our database. -- BLOCKER
-    if (!libraryData) {
+    if (!libraryData.length) {
       console.log("That aint it.");
       console.log(libraryData.zip_code);
       res

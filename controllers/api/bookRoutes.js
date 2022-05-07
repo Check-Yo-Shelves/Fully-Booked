@@ -7,22 +7,28 @@ router.post('/', (req, res) => {
       .catch(err => res.status(400).json({ error: 'Can not add this book' }));
   });
 
-//   router.delete('/:id', (req, res) => {
-//     Book.destroy(req.params.id, req.body)
-//       .then(book => res.json({ mgs: 'This book has been deleted' }))
-//       .catch(err => res.status(404).json({ error: 'Book not found' }));
-//   });
+router.get('/', (req, res) => {
+  Book.findAll()
+    .then(books => res.json(books))
+    .catch(err => res.status(404).json({ nobooksfound: 'Book not found' }));
+});
+
+router.get('/:id', (req, res) => {
+  Book.findByPk(req.params.id)
+    .then(book => res.json(book))
+    .catch(err => res.status(404).json({ nobookfound: 'Book not found' }));
+});
 
 
 router.delete('/:id', async (req, res) => {
     try {
-      const Book = await book.destroy({
+      const bookData = await Book.destroy({
         where: {
           id: req.params.id,
         },
       });
   
-      if (!book) {
+      if (!bookData) {
         res.status(404).json({ message: 'Book not found' });
         return;
       }
@@ -31,5 +37,7 @@ router.delete('/:id', async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  
 
   module.exports = router;
