@@ -43,20 +43,16 @@ router.get('/login', (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    // Get User's checked out books and owned libraries to display here.
-    // const libraryData = await Library.findAll({
-    //   where: ,
-    // })
+    // Get User's checked owned libraries to display here.
+    const userData = await User.findAll({
+      include: [ { model: Library }, { model: LibraryBook } ],
+    });
     
-    // const bookData = await Book.findAll({
-
-    // });
-
-    // const books = bookData.map((book) => book.get({ plain: true }));
+    const user = userData.map((user) => user.get({ plain: true }));
+    console.log(user);
 
     res.render('dashboard', {
-      // books,
-      // libraries,
+      user,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
