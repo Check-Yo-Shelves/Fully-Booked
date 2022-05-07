@@ -12,13 +12,14 @@
 
   <body>
     <header class="display-flex justify-space-between align-center p-2">
-      {{! add nav bar  }}
+      {{! Add icon either before or after nav  }}
       <nav class="col-12">
         <button class="btn btn-primary" id="home">Home</button>
         <button class="btn btn-primary" id="libraries">Browse Libraries</button>
         <button class="btn btn-primary" id="search">Search</button>
         {{#if logged_in}}
           <button class="btn btn-primary" id="logout">Logout</button>
+          <button class="btn btn-primary" id="dashboard">Dashboard</button>
         {{else}}
           <button class="btn btn-primary" id="login">Login</button>
         {{/if}}
@@ -28,18 +29,6 @@
     <main class="container container-fluid mt-5">
       {{{body}}}
     </main>
-    <footer>
-      {{! *Made by*  }}
-    </footer>
-
-    {{#if logged_in}}
-      <script src="/js/logout.js"></script>
-    {{/if}}
-    {{!-- {{> navbar}} --}}
-  </header>
-  <main class="container container-fluid mt-5">
-    {{{ body }}}
-  </main>
   <footer>
 Project two: Northwestern bootcamp
   </footer>
