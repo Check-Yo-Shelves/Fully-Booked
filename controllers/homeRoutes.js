@@ -51,6 +51,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     // Get User's checked owned libraries to display here.
     const userData = await User.findByPk(req.session.user_id, {
       include: [{ model: Library }, { model: LibraryBook }],
+      exclude: ['password'],
     });
 
     const user = userData.get({ plain: true });
