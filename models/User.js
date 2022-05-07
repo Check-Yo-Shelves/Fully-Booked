@@ -36,16 +36,31 @@ User.init(
       },
     },
     zip_code: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
+        isNumeric: true,
         len: [5, 5],
       },
     },
+    // Placeholder for storing image urls for profile picture.
+    // image_url: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    //   validate: {
+    //     isUrl: true,
+    //   }
+    // },
   },
   {
     hooks: {
-      beforeCreate: async (newUserData) => {
+      async beforeBulkCreate(newUserData) {
+        for (let i = 0; i < newUserData.length; i++) {
+          newUserData[i].password = await bcrypt.hash(newUserData[i].password, 10);
+        }
+        return newUserData;
+      },
+      async beforeCreate(newUserData) {
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },

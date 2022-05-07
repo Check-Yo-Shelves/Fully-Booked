@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// Hitting the route successfully. Console log works well.
 router.post('/login', async (req, res) => {
   try {
+    console.log('Login route OK')
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
@@ -33,7 +35,20 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// This works 100%
+router.post(`/signup`, async (req, res) => {
+  try {
+    console.log('Signup route OK')
+    const signupData = await User.create(req.body);
+    res.status(200).json(signupData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+// Hitting the console.log
 router.post('/logout', (req, res) => {
+  console.log("Logout route OK")
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
