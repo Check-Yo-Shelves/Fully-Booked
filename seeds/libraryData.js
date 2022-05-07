@@ -31,7 +31,7 @@ const libraryData = [
         address: "5678 N Western Ave",
         lat: 41.900589,
         lon: -87.679611,
-        owner_id: 5,
+        owner_id: 1,
     },
 ];
 

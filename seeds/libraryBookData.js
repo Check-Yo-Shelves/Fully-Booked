@@ -11,11 +11,13 @@ const libraryBookData = [
         library_id: 1,
         book_id: 3,
         checked_out: false,
+        borrower_id: null,
     },
     {
         library_id: 2,
         book_id: 1,
         checked_out: false,
+        borrower_id: null,
     },
     {
         library_id: 2,
