@@ -27,7 +27,10 @@ router.get("/:zip_code", async (req, res) => {
       where: {
         zip_code: req.params.zip_code,
       },
-      include: [{ model: User }],
+      include: [{
+        model: User,
+        attributes: { exclude: ['password'] }
+      }],
     });
     console.log(libraryData);
     if (!libraryData.length) {
