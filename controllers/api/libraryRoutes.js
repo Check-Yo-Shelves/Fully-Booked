@@ -14,10 +14,11 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Distance search by lat and lon.
+// Distance search by latitude or longitude
 
 // Get libraries by ZIP (GET)
-router.get("/:zip", async (req, res) => {
+// WORKS
+router.get("/:zip_code", async (req, res) => {
   try {
     const libraryData = await Library.findAll({
       where: {
