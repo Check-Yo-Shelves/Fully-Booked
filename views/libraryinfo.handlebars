@@ -1,0 +1,9 @@
+<div class="justify-center col-10">
+  <div class="col-12">
+    <h1 class="text-center">{{library.name}}</h1>
+    {{!-- <h1 class="text-center">Library Name Goes Here</h1> --}}
+  </div>
+  {{#each library.books_library as |book|}}
+  {{> book-card}}
+  {{/each}}
+</div>

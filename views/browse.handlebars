@@ -12,7 +12,7 @@
           <p class="card-text">{{library.address}}</p>
         </div>
         <div class="card-body">
-          <button type="button">View Library Books</button>
+          <button type="button" onclick="location.href='/libraryinfo/{{library.id}}'">View Library Books</button>
         </div>
       </div>
     {{/each}}

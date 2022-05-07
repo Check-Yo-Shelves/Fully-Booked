@@ -51,7 +51,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     // Get User's checked owned libraries to display here.
     const userData = await User.findByPk(req.session.user_id, {
       include: [{ model: Library }, { model: LibraryBook }],
-      exclude: ['password'],
+      attributes: { exclude: ['password'] },
     });
 
     const user = userData.get({ plain: true });
@@ -61,6 +61,23 @@ router.get('/dashboard', withAuth, async (req, res) => {
       user,
       logged_in: req.session.logged_in,
     });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/libraryinfo/:id', async (req, res) => {
+  try {
+    // Get User's checked owned libraries to display here.
+    const libraryData = await Library.findByPk(req.params.id,
+      {
+        include: [{ model: Book, through: LibraryBook, as: 'books_library' }],
+      });
+
+    const library = libraryData.get({ plain: true });
+    console.log(library);
+
+    res.render('libraryinfo', { library });
   } catch (err) {
     res.status(500).json(err);
   }
