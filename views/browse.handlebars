@@ -5,11 +5,14 @@
 <div class="browseResults container col pt-4">
   <!-- Here's where our Get All Libraries results will live. -->
   {{#each libraries as |library|}}
-  
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{library.name}}</h5>
+        <p class="card-text">{{library.address}}</p>
+      </div>
+      <div class="card-body">
+        <button type="button">View Library</button>
+      </div>
+    </div>
   {{/each}}
-  <p>Result 1</p>
-  <p>Result 2</p>
-  <p>Result 3</p>
-  <p>Result 4</p>
-  <p>Result 5</p>
 </div>
