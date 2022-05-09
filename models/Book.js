@@ -18,7 +18,7 @@ Book.init(
             allowNull: false,
             validate: {
                 isNumeric: true,
-                len: [10],
+                len: [10, 13],
             },
         },
         title: {
@@ -28,6 +28,11 @@ Book.init(
         author: {
             type: DataTypes.STRING,
             // allowNull: false,
+            // Split up the author names if more than one author exists.
+            get() {
+                const rawValue = this.getDataValue('author');
+                return rawValue ? rawValue.split(',') : null;
+            },
         },
         artwork: {
             type: DataTypes.STRING,
@@ -36,8 +41,15 @@ Book.init(
                 isUrl: true,
             },
         },
+        // description: {
+        //     type: DataTypes.STRING,
+        // },
         // genre: {
         //     type: DataTypes.STRING,
+        //     get() {
+        //         const rawValue = this.getDataValue('genre');
+        //         return rawValue ? rawValue.split(',') : null;
+        //     },
         // },
     },
     {
@@ -50,11 +62,8 @@ Book.init(
                 return await bookApi(newBookData);
             },
             async beforeCreate(newBookData) {
-                let bookInfo = await bookApi(newBookData);
-                newBookData[0].title = bookInfo.title;
-                newBookData[0].author = bookInfo.author;
-                newBookData[0].artwork = bookInfo.artwork;
-                return newBookData;
+                // newBookData = await bookApi(newBookData);
+                return await bookApi(newBookData);
             },
         },
         sequelize,
