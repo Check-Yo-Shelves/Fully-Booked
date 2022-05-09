@@ -22,7 +22,7 @@ Book.init(
             },
         },
         title: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(),
             allowNull: true,
         },
         author: {
@@ -41,9 +41,9 @@ Book.init(
                 isUrl: true,
             },
         },
-        // description: {
-        //     type: DataTypes.STRING,
-        // },
+        description: {
+            type: DataTypes.STRING(10000),
+        },
         // genre: {
         //     type: DataTypes.STRING,
         //     get() {
