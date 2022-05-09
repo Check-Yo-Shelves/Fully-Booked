@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const { bookApi } = require('../utils/bookApi.js');
 
 class Book extends Model { }
 
@@ -17,6 +18,7 @@ Book.init(
             allowNull: false,
             validate: {
                 isNumeric: true,
+                len: [10],
             },
         },
         title: {
@@ -39,6 +41,22 @@ Book.init(
         // },
     },
     {
+        hooks: {
+            async beforeBulkCreate(newBookData) {
+                // let bookInfo = await bookApi(newBookData);
+                // newBookData[0].title = bookInfo.title;
+                // newBookData[0].author = bookInfo.author;
+                // newBookData[0].artwork = bookInfo.artwork;
+                return await bookApi(newBookData);
+            },
+            async beforeCreate(newBookData) {
+                let bookInfo = await bookApi(newBookData);
+                newBookData[0].title = bookInfo.title;
+                newBookData[0].author = bookInfo.author;
+                newBookData[0].artwork = bookInfo.artwork;
+                return newBookData;
+            },
+        },
         sequelize,
         timestamps: false,
         freezeTableName: true,
