@@ -7,24 +7,26 @@ const searchHandler = async (e) => {
   e.preventDefault();
   const searchBar = document.getElementById("searchBar");
   var search = searchBar.value;
-//   if (search !== Number) {
-//       console.error();
-//       return;
-//   }
+  //   if (search !== Number) {
+  //       console.error();
+  //       return;
+  //   }
 
+  // Searches by book ID for the present
   console.log(search);
-  console.log("search function started");
+  console.log("searching...");
 
   if (search) {
-    const response = await fetch(`/api/books/:${search}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(`/api/books/:${search}`)
+    // .then((response) => JSON.parse(response).title)
+  
+    // console.log(response);
+
     if (response.ok) {
-      console.log(response);
+      const data = await response.json();
+      console.log(data);
     }
+    document.getElementById("searchResults").innerHTML(response);
   } else {
     alert("No results. Please try your search again.");
   }
