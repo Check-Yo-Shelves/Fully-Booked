@@ -1,9 +1,11 @@
 <div class="card" style="width: 18rem;">
-  <img src="book api source" class="card-img-top" alt="Book Title Cover">
+  <img src="{{artwork}}" class="card-img-top" alt="Book Title Cover">
   <div class="card-body">
-    <h5 class="card-title">Book Title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Author Name</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title">{{title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{author}}</h6>
+    {{#if description}}
+    <p class="card-text">{{description}}</p>
+    {{/if}}
     <a href="#" class="btn btn-primary">Check Book Out</a>
   </div>
 </div>
