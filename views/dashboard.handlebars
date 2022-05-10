@@ -1,10 +1,10 @@
 <div class="container pt-5" id="userContainer">
-    <h2>Hello, USERNAME.</h2>
+    <h2>Hello, {{user.name}}</h2>
     <img src="" alt="User Photo" />
     <div class="listContainer container row justify-content-center">
         <div class="userLinks col">
             <div class="userList col align-top" id="dashboardLinks">
-                <h5>Username</h5>
+                <h5>{{user.name}}</h5>
                 <ul class="list-group">
                     <a href="" class="list-group-item">Reading List</a>
                     <a href="" class="list-group-item">Favorites</a>
@@ -13,21 +13,49 @@
                     <a href="" class="list-group-item">Logout</a>
                 </ul>
             </div>
+
         </div>
-        <div class="userList col align-top" id="checkedOut">
+        {{!-- <div class="userList col align-top" id="checkedOut">
             <h5>Checked Out</h5>
             <ul class="list-group">
                 <li class="list-group-item">The Hobbit</li>
                 <li class="list-group-item">The Pillars of the Earth</li>
-                <li class="list-group-item">The Silence of the Lambs</li>
-            </ul>
+                <li class="list-group-item">The Silence of the Lambs</li> --}}
+
+                {{!-- if book us checked user logged in , then show book(s) else show message provide button to add
+                books --}}
+                {{#if checked_out}}
+                <div class="userList col align-top" id="checkedOut">
+                    <h5>Checked Out</h5>
+                    <ul class="list-group">
+                        {{!-- for each checked out book --}}
+                        <li class="list-group-item">{{book.title}}</li>
+                        <li class="list-group-item">{{book.title}}</li>
+                        {{else}}
+                        <h1>You do not have any checked out books!
+                            {{!-- add link to search or browse page --}}
+                        </h1>
+
+                    </ul>
+                </div>
+                {{/if}}
+
+
+                {{!-- if user is the owner of a library then show all libraries they own , else show message --}}
+                {{!-- {{#if library_id }} --}}
+                {{#if}}
+                <div class="userList col align-top">
+                    <h5> {{user.name}} Libraries</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item"> {{library.name}}</li>
+                        <li class="list-group-item"> {{library.name}}</li>
+
+                        {{else}}
+                        <h2>You do not have any current Libraries!To create a library click here!</h2>
+                        {{!-- add link or button to search or browse page --}}
+
+                    </ul>
+
+                </div>
+                {{/if}}
         </div>
-        <div class="userList col align-top" id="checkedOut">
-            <h5>My Libraries</h5>
-            <ul class="list-group">
-                <li class="list-group-item">Addison St Community Library</li>
-                <li class="list-group-item">Damen Ave Community Library</li>
-            </ul>
-        </div>
-    </div>
-</div>
