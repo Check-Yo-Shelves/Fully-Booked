@@ -5,7 +5,9 @@ const withAuth = require('../utils/auth');
 // 
 router.get('/', async (req, res) => {
   try {
-    res.render('homepage');
+    res.render('homepage', {
+      logged_in: req.session.logged_in,
+    });
     console.log('Root route OK');
     // Status
   } catch (err) {
