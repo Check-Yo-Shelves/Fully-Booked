@@ -50,7 +50,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Get User's checked owned libraries to display here.
     const userData = await User.findByPk(req.session.user_id, {
-      include: [{ model: Library }, { model: LibraryBook }],
+    
+      include: [{ model: Library }, { model: Book, through: LibraryBook, as: 'books' }],
       attributes: { exclude: ['password'] },
     });
 
@@ -61,8 +62,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
       user,
       logged_in: req.session.logged_in,
     });
+    console.log('Dashboard Route OK');
   } catch (err) {
     res.status(500).json(err);
+  
   }
 });
 
