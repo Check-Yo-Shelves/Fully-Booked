@@ -2,12 +2,13 @@ const signupFormHandler = async (event) => {
     event.preventDefault();
     console.log("Signup working")
     // Pull query selectors from Nat's handlebars
-    const name = document.getElementById('name-signup').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
-    const zip_code = document.querySelector('#zip_code-signup').value.trim();
-    const repeatpw = document.querySelector('#repeatpw').value.trim();
-  
+    const name = document.querySelector('#name').value.trim();
+    const email = document.querySelector('#email').value.trim();
+    const password = document.querySelector('#password').value.trim();
+    const zip_code = document.querySelector('#zipcode').value.trim();
+    const repeatpw = document.querySelector('#RP').value.trim();
+
+    // Might need a way of checking if the email already exists
     if (name && email && password && zip_code) {
       if (password === repeatpw) {
           const response = await fetch('/api/users/signup', {
@@ -15,12 +16,13 @@ const signupFormHandler = async (event) => {
           body: JSON.stringify({ name, email, password, zip_code }),
           headers: { 'Content-Type': 'application/json' },
         }); 
-      }
-  
-      if (response.ok) {
-        document.location.replace('/dashboard');
+        if (response.ok) {
+          document.location.replace('/dashboard');
+        } else {
+          alert('Failed to log in');
+        }
       } else {
-        alert('Failed to log in');
+        alert("Passwords do not match. Please try again.");
       }
     }
   };
