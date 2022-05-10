@@ -1,7 +1,17 @@
-<div class="topnav">
-  <div class="search-container">
-    <form class="justify-content-center text-center">
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit">Search</button>
-    </form>
+<div class="search-container">
+  <form class="justify-content-center text-center">
+    <input type="text" placeholder="Search..." name="search" id="searchBar"/>
+    <button type="submit" id="searchBtn">Search</button>
+  </form>
+  <div class="container col pt-4" id="searchResults">
+    {{#each books as |book|}}
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{book.title}}</h5>
+          <p class="card-text">{{book.isbn}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
 </div>
+<script src="/js/search.js"></script>

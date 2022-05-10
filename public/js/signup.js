@@ -1,6 +1,6 @@
 const signupFormHandler = async (event) => {
     event.preventDefault();
-    
+    console.log("Signup working")
     // Pull query selectors from Nat's handlebars
     const name = document.querySelector('#name').value.trim();
     const email = document.querySelector('#email').value.trim();
