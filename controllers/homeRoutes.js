@@ -109,12 +109,19 @@ router.get('/libraryinfo/:id', async (req, res) => {
   }
 });
 
-router.get('/bookinfo/:id', async (req, res) => {
+router.get('/bookinfo/:title', async (req, res) => {
   try {
-    const bookInfo = await Book.findByPk(req.params.id);
+    console.log(req.params);
+    const bookInfo = await Book.findAll({
+      where: {
+        title: req.params.title,
+      }
+    });
 
-    const book = bookInfo.get({ plain: true });
-    console.log(book);
+    const booksFound = bookInfo.map((book => book.get({ plain: true })));
+    const thing = booksFound;
+    const [book] = thing;
+    console.log(book.title);
     res.render('bookinfo', { book });
   } catch (err) {
     res.status(500).json(err);
