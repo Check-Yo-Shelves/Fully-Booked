@@ -22,7 +22,7 @@ router.get('/browse', async (req, res) => {
     });
     const libraries = libraryData.map((library => library.get({ plain: true })));
 
-    res.render('browse', { libraries });
+    res.render('browse', { libraries, logged_in: req.session.logged_in, });
     console.log('Browse route OK');
   } catch (err) {
     res.status(500).json(err);
@@ -31,7 +31,9 @@ router.get('/browse', async (req, res) => {
 
 router.get('/search', async (req, res) => {
   try {
-    res.render('search');
+    res.render('search', {
+      logged_in: req.session.logged_in,
+    });
     console.log('Search route OK');
   } catch (err) {
     res.status(500).json(err);
@@ -52,8 +54,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Get User's checked owned libraries to display here.
     const userData = await User.findByPk(req.session.user_id, {
-    
-      include: [{ model: Library }, { model: Book, through: LibraryBook, as: 'books' }],
+
+      include: [{ model: Library }, { model: LibraryBook }],
       attributes: { exclude: ['password'] },
     });
 
@@ -67,7 +69,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     console.log('Dashboard Route OK');
   } catch (err) {
     res.status(500).json(err);
-  
+
   }
 });
 
@@ -83,7 +85,7 @@ router.get('/libraryinfo/:id', async (req, res) => {
     console.log(library);
     // Add
 
-    res.render('libraryinfo', { library });
+    res.render('libraryinfo', { library, logged_in: req.session.logged_in, });
   } catch (err) {
     res.status(500).json(err);
   }

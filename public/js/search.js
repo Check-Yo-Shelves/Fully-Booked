@@ -3,6 +3,8 @@
 // search by ISBN
 
 // search by Name if we lucky
+
+// Use this to render a new page with book info.
 const searchHandler = async (e) => {
   e.preventDefault();
   const searchBar = document.getElementById("searchBar");
@@ -25,8 +27,8 @@ const searchHandler = async (e) => {
     if (response.ok) {
       const data = await response.json();
       console.log(data);
+      document.location.replace('/bookinfo');
     }
-    document.getElementById("searchResults").innerHTML(response);
   } else {
     alert("No results. Please try your search again.");
   }

@@ -23,7 +23,6 @@
       {{else}}
       <button onclick="location.href='/login'" class="btn btn-primary" id="login">Login</button>
       {{/if}}
-      {{!-- {{>search}} --}}
     </nav>
   </header>
   <main class="container container-fluid mt-5">
@@ -35,14 +34,8 @@
 
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
-  {{else}}
-  <script src="/js/login.js"></script>
   {{/if}}
-  <script src="/js/main.js"></script>
+  {{!-- <script src="/js/main.js"></script> --}}
 </body>
-    {{#if logged_in}}
-      <script src="/js/logout.js"></script>
-    {{/if}}
-    {{!-- <script src="/js/main.js"></script> --}}
-  </body>
+
 </html>
