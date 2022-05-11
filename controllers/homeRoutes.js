@@ -40,7 +40,7 @@ router.get('/search', async (req, res) => {
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('dashboard');
+    res.redirect('/dashboard');
     console.log('Login route OK');
     return;
   }
