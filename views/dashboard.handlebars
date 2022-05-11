@@ -21,13 +21,7 @@
         <button>Click here to update a library {{libraries}}</button>     
 
         </div>
-        {{!-- <div class="userList col align-top" id="checkedOut">
-            <h5>Checked Out</h5>
-            <ul class="list-group">
-                <li class="list-group-item">The Hobbit</li>
-                <li class="list-group-item">The Pillars of the Earth</li>
-                <li class="list-group-item">The Silence of the Lambs</li> --}}
-
+        
                 {{!-- if book us checked user logged in , then show book(s) else show message provide button to add
                 books --}}
                 {{#if user.librarybooks}}
@@ -35,8 +29,14 @@
                     <h5>Checked Out</h5>
                     <ul class="list-group">
                         {{!-- for each checked out book --}}
-                        <li class="list-group-item">{{book.title}}</li>
-                        <li class="list-group-item">{{book.title}}</li>
+                        {{!-- <li class="list-group-item">{{book.title}}</li>
+                        <li class="list-group-item">{{book.title}}</li> --}}
+
+                {{!-- Placeholder --}}
+                <li class="list-group-item">The Pillars of the Earth</li>
+                <li class="list-group-item">The Silence of the Lambs</li> 
+
+
                         {{else}}
                         <h1>You do not have any checked out books!
                             {{!-- add link to search or browse page --}}
@@ -54,8 +54,6 @@
                     <ul class="list-group">
                         {{!-- <li class="list-group-item"> {{library.name}}</li>
                         <li class="list-group-item"> {{library.name}}</li> --}}
-
-
 
                         {{!-- Placeholder Library Table --}}
                         <li class="list-group-item">Library One</li>
