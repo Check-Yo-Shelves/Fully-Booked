@@ -19,7 +19,6 @@ router.get('/:id', (req, res) => {
         .catch(err => res.status(404).json({ nobookfound: 'Book not found' }));
 });
 
-
 router.delete('/:id', async (req, res) => {
     try {
         const bookData = await Book.destroy({
