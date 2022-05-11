@@ -89,4 +89,16 @@ router.get('/libraryinfo/:id', async (req, res) => {
   }
 });
 
+router.get('/bookinfo/:id', async (req, res) => {
+  try {
+    const bookInfo = await Book.findByPk(req.params.id);
+
+    const book = bookInfo.get({ plain: true });
+    console.log(book);
+    res.render('bookinfo', { book });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
