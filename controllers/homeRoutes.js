@@ -62,14 +62,32 @@ router.get('/login', (req, res) => {
 //     const user = userData.get({ plain: true });
 //     console.log(user);
 
-//     res.render('dashboard', {
-//       user,
-//       logged_in: req.session.logged_in,
-//     });
-//     console.log('Dashboard Route OK');
-//   } catch (err) {
-//     res.status(500).json(err);
 
+    let checkedOut = [];
+
+    for (let i = 0; i < user.librarybooks.length; i++) {
+      checkedOut.push(user.librarybooks[i].book_id);
+    }
+    console.log("Checked out Array", checkedOut);
+
+    const bookData = await Book.findAll({
+      where: {
+        id: checkedOut,
+      },
+    });
+    // console.log(bookData);
+
+    const books = bookData.map((book => book.get({ plain: true })));
+    console.log("Checked out books", books);
+
+    res.render('dashboard', {
+      user,
+      books,
+      logged_in: req.session.logged_in,
+    });
+    console.log('Dashboard Route OK');
+  } catch (err) {
+    res.status(500).json(err);
 //   }
 // });
 
@@ -86,6 +104,25 @@ router.get('/libraryinfo/:id', async (req, res) => {
     // Add
 
     res.render('libraryinfo', { library, logged_in: req.session.logged_in, });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/bookinfo/:title', async (req, res) => {
+  try {
+    console.log(req.params);
+    const bookInfo = await Book.findAll({
+      where: {
+        title: req.params.title,
+      }
+    });
+
+    const booksFound = bookInfo.map((book => book.get({ plain: true })));
+    const thing = booksFound;
+    const [book] = thing;
+    console.log(book.title);
+    res.render('bookinfo', { book });
   } catch (err) {
     res.status(500).json(err);
   }

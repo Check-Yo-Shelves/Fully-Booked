@@ -27,7 +27,7 @@ const searchHandler = async (e) => {
     if (response.ok) {
       const data = await response.json();
       console.log(data);
-      document.location.replace('/bookinfo');
+      document.location.replace(`/bookinfo/${search}`);
     }
   } else {
     alert("No results. Please try your search again.");
@@ -39,10 +39,3 @@ document.getElementById("searchBtn").addEventListener("click", (e) => {
   console.log("Click Event");
   e.preventDefault;
 });
-
-// startSearch.addEventListener("submit", (e) => {
-//     e.preventDefault();
-//     console.log("Click event");
-//     searchHandler();
-
-// })
