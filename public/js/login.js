@@ -19,9 +19,6 @@ const loginFormHandler = async (event) => {
   }
 };
 
-const loginBtn = document.getElementById('loginBtn');
-console.log(loginBtn);
-loginBtn.addEventListener('submit', () => {
-  console.log(loginBtn);
-  loginFormHandler();
-});
+document
+  .querySelector('.login-form')
+  .addEventListener('submit', loginFormHandler);
