@@ -62,32 +62,31 @@ router.get('/login', (req, res) => {
 //     const user = userData.get({ plain: true });
 //     console.log(user);
 
+  //   let checkedOut = [];
 
-    let checkedOut = [];
+  //   for (let i = 0; i < user.librarybooks.length; i++) {
+  //     checkedOut.push(user.librarybooks[i].book_id);
+  //   }
+  //   console.log("Checked out Array", checkedOut);
 
-    for (let i = 0; i < user.librarybooks.length; i++) {
-      checkedOut.push(user.librarybooks[i].book_id);
-    }
-    console.log("Checked out Array", checkedOut);
+  //   const bookData = await Book.findAll({
+  //     where: {
+  //       id: checkedOut,
+  //     },
+  //   });
+  //   // console.log(bookData);
 
-    const bookData = await Book.findAll({
-      where: {
-        id: checkedOut,
-      },
-    });
-    // console.log(bookData);
+  //   const books = bookData.map((book => book.get({ plain: true })));
+  //   console.log("Checked out books", books);
 
-    const books = bookData.map((book => book.get({ plain: true })));
-    console.log("Checked out books", books);
-
-    res.render('dashboard', {
-      user,
-      books,
-      logged_in: req.session.logged_in,
-    });
-    console.log('Dashboard Route OK');
-  } catch (err) {
-    res.status(500).json(err);
+  //   res.render('dashboard', {
+  //     user,
+  //     books,
+  //     logged_in: req.session.logged_in,
+  //   });
+  //   console.log('Dashboard Route OK');
+  // } catch (err) {
+  //   res.status(500).json(err);
 //   }
 // });
 
