@@ -50,17 +50,18 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-router.get('/dashboard', withAuth, async (req, res) => {
-  try {
-    // Get User's checked owned libraries to display here.
-    const userData = await User.findByPk(req.session.user_id, {
+// router.get('/dashboard', withAuth, async (req, res) => {
+//   try {
+//     // Get User's checked owned libraries to display here.
+//     const userData = await User.findByPk(req.session.user_id, {
 
-      include: [{ model: Library }, { model: LibraryBook }],
-      attributes: { exclude: ['password'] },
-    });
+//       include: [{ model: Library }, { model: LibraryBook }],
+//       attributes: { exclude: ['password'] },
+//     });
 
-    const user = userData.get({ plain: true });
-    console.log(user);
+//     const user = userData.get({ plain: true });
+//     console.log(user);
+
 
     let checkedOut = [];
 
@@ -87,9 +88,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
     console.log('Dashboard Route OK');
   } catch (err) {
     res.status(500).json(err);
-
-  }
-});
+//   }
+// });
 
 router.get('/libraryinfo/:id', async (req, res) => {
   try {
@@ -109,12 +109,19 @@ router.get('/libraryinfo/:id', async (req, res) => {
   }
 });
 
-router.get('/bookinfo/:id', async (req, res) => {
+router.get('/bookinfo/:title', async (req, res) => {
   try {
-    const bookInfo = await Book.findByPk(req.params.id);
+    console.log(req.params);
+    const bookInfo = await Book.findAll({
+      where: {
+        title: req.params.title,
+      }
+    });
 
-    const book = bookInfo.get({ plain: true });
-    console.log(book);
+    const booksFound = bookInfo.map((book => book.get({ plain: true })));
+    const thing = booksFound;
+    const [book] = thing;
+    console.log(book.title);
     res.render('bookinfo', { book });
   } catch (err) {
     res.status(500).json(err);

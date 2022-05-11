@@ -15,22 +15,28 @@
             </div>
 
         </div>
-        {{!-- <div class="userList col align-top" id="checkedOut">
-            <h5>Checked Out</h5>
-            <ul class="list-group">
-                <li class="list-group-item">The Hobbit</li>
-                <li class="list-group-item">The Pillars of the Earth</li>
-                <li class="list-group-item">The Silence of the Lambs</li> --}}
 
+        <div>
+        <button>Click here to create a library{{libraries}}</button>   
+        <button>Click here to update a library {{libraries}}</button>     
+
+        </div>
+        
                 {{!-- if book us checked user logged in , then show book(s) else show message provide button to add
                 books --}}
-                {{#if checked_out}}
+                {{#if user.librarybooks}}
                 <div class="userList col align-top" id="checkedOut">
                     <h5>Checked Out</h5>
                     <ul class="list-group">
                         {{!-- for each checked out book --}}
-                        <li class="list-group-item">{{book.title}}</li>
-                        <li class="list-group-item">{{book.title}}</li>
+                        {{!-- <li class="list-group-item">{{book.title}}</li>
+                        <li class="list-group-item">{{book.title}}</li> --}}
+
+                {{!-- Placeholder --}}
+                <li class="list-group-item">The Pillars of the Earth</li>
+                <li class="list-group-item">The Silence of the Lambs</li> 
+
+
                         {{else}}
                         <h1>You do not have any checked out books!
                             {{!-- add link to search or browse page --}}
@@ -42,17 +48,25 @@
 
 
                 {{!-- if user is the owner of a library then show all libraries they own , else show message --}}
-                {{!-- {{#if library_id }} --}}
-                {{#if}}
+                {{#if user.libraries }}
                 <div class="userList col align-top">
                     <h5> {{user.name}} Libraries</h5>
                     <ul class="list-group">
-                        <li class="list-group-item"> {{library.name}}</li>
-                        <li class="list-group-item"> {{library.name}}</li>
+                        {{!-- <li class="list-group-item"> {{library.name}}</li>
+                        <li class="list-group-item"> {{library.name}}</li> --}}
+
+                        {{!-- Placeholder Library Table --}}
+                        <li class="list-group-item">Library One</li>
+                         <li class="list-group-item">Library Two</li>
 
                         {{else}}
-                        <h2>You do not have any current Libraries!To create a library click here!</h2>
-                        {{!-- add link or button to search or browse page --}}
+                        <h6>You do not have any libraries! CLick the button below to create a personlized library.</h6>
+
+                        <button>Click here to create a library{{libraries}}</button>
+
+
+
+                        {{!-- add link or button to create a library--}}
 
                     </ul>
 
