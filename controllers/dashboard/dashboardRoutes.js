@@ -41,14 +41,76 @@ router.get('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+//Get methods (passing data to handlebars)
+//create book (ISBN)
+// const withAuth = require('../../utils/auth');
 
-//create book ()
+
+router.get('/libraries', withAuth, async (req, res) => {
+  try {
+    const Book = await User.findAll({
+      // attributes: { exclude: ['password'] },
+      order: [['name', 'ISBN']],
+    });
+  }catch{
+    if(err){
+      console.log(err,"get libraries")
+    }else{
+      console.log("Route hit for /libraries")
+    }
+
+  }
+});
 //delete book (delete)
+// todo
+router.delete('/librarybook/:id', withAuth, async (req, res) => {
+  try {
+    const Book = await User.findAll({
+      // attributes: { exclude: ['password'] },
+      order: [['name', 'ISBN']],
+    });
+  }catch{
+    if(err){
+      console.log(err,"Delete book")
+    }else{
+      console.log("Route hit for /librarybook/:id")
+    }
+
+  }
+});
 //create library (post)
+router.post('/library', withAuth, async (req, res) => {
+  try {
+    const Library = await User.findAll({
+      // attributes: { exclude: ['password'] },
+      order: [['name', 'address']],
+    });
+  }catch{
+    if(err){
+      console.log(err,"Post library")
+    }else{
+      console.log("Route hit for /library")
+    }
+
+  }
+})
 //update library (get)
+// todo
+router.put('/library/:id', withAuth, async (req, res) => {
+  try {
+    const Library = await User.findAll({
+      // attributes: { exclude: ['password'] },
+      order: [['name', 'address']],
+    });
+  }catch{
+    if(err){
+      console.log(err,"update library")
+    }else{
+      console.log("Route hit for /library/:id")
+    }
 
-
+  }
+})
 
 module.exports = router;
-
 
