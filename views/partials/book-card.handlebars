@@ -1,4 +1,4 @@
-<div class="card " style="width: 18rem;">
+<div class="book-card " style="width: 18rem;">
   <img src="{{artwork}}" class="card-img-top" alt="Book Title Cover">
   <div class="card-body">
     <h5 class="card-title">{{title}}</h5>
@@ -6,6 +6,6 @@
     {{#if description}}
     <p class="card-text">{{description}}</p>
     {{/if}}
-    <a href="#" class="btn btn-primary">Check Book Out</a>
+    <a onclick="location.href='/dashboard/checkout/{{id}}" class="btn btn-primary">Check Book Out</a>
   </div>
 </div>
