@@ -6,8 +6,10 @@
     {{#if description}}
     <p class="card-text">{{description}}</p>
     {{/if}}
+    {{#if logged_in}}
     <div class="card-footer">
       <a onclick="location.href='/dashboard" class="btn btn-primary">Check Out Book</a>
     </div>
+    {{/if}}
   </div>
 </div>
