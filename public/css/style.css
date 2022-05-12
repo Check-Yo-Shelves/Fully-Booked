@@ -7,6 +7,24 @@ body {
     background-repeat: no-repeat;
 };
 
-main {
+
+h1, h2, h3, h4, h5, h6 {
     color: white;
-};
+}
+
+
+/* nav button {
+    /* color: black; */
+
+
+/* }
+
+
+/* div {
+    color: black;
+}; */
+
+
+/* p {
+    color: white;
+}; */
