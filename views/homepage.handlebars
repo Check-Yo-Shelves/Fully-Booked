@@ -1,23 +1,26 @@
-<div class="container col pt-5">
-  <h1 class="text-center">Fully Booked</h1>
-  <h5 class="text-center">Virtual Community Library</h5>
-  <div class="text-center pt-3">
-    <img src="" alt="Fully Booked Logo" />
+
+<div class="bg-dark p-2 bg-opacity-25">
+  <div class="container col pt-5">
+    <h1 class="text-center text-white">Fully Booked</h1>
+    <h5 class="text-center text-white">Virtual Community Library</h5>
+    <div class="text-center pt-3">
+      <img src=`{{logoLink}}` alt="Fully Booked Logo"/>
+    </div>
   </div>
-</div>
-<article class="pt-5 text-center">
-  <p>
-    Find and create libraries in your community.
-  </p>
-  <p>
-    Sign up to checkout books and manage your libraries.
-  </p>
-  <p>
-    Or, search to see what books exist in community libraries near you!
-  </p>
-</article>
-<div class="text-center" id="buttonsHome">
-  <button type="button" onclick="location.href='/browse'">Browse Libaries</button>
-  <button type="button" onclick="location.href='/search'">Search</button>
-  <button type="button" onclick="location.href='/login'">Sign Up</button>
+  <article class="pt-5 text-center text-white">
+    <p>
+      Find and create libraries in your community.
+    </p>
+    <p>
+      Sign up to checkout books and manage your libraries.
+    </p>
+    <p>
+      Or, search to see what books exist in community libraries near you!
+    </p>
+  </article>
+  <div class="text-center" id="buttonsHome">
+    <button type="button" onclick="location.href='/browse'" class="btn btn-primary btn-outline-light" style="background-color: #C09880;">Browse Libraries</button>
+    <button type="button" onclick="location.href='/search'" class="btn btn-primary btn-outline-light" style="background-color: #C09880;">Search</button>
+    <button type="button" onclick="location.href='/login'" class="btn btn-primary btn-outline-light" style="background-color: #C09880;">Signup</button>
+  </div>
 </div>

@@ -1,75 +1,68 @@
 <div class="container pt-5" id="userContainer">
     <h2>Hello, {{user.name}}</h2>
-    <img src="" alt="User Photo" />
+    {{!-- <img src="" alt="User Photo" /> --}}
     <div class="listContainer container row justify-content-center">
-        <div class="userLinks col">
+        <div class="userLinks col m-3">
             <div class="userList col align-top" id="dashboardLinks">
-                <h5>{{user.name}}</h5>
+                <h3>{{user.name}}</h3>
                 <ul class="list-group">
                     <a href="" class="list-group-item">Reading List</a>
                     <a href="" class="list-group-item">Favorites</a>
-                    <a href="" class="list-group-item">Manage Libraries</a>
                     <a href="" class="list-group-item">Account</a>
-                    <a href="" class="list-group-item">Logout</a>
                 </ul>
             </div>
 
         </div>
-
-        <div>
-        <button>Click here to create a library{{libraries}}</button>   
-        <button>Click here to update a library {{libraries}}</button>     
-
-        </div>
-        
-                {{!-- if book us checked user logged in , then show book(s) else show message provide button to add
-                books --}}
-                {{#if user.librarybooks}}
-                <div class="userList col align-top" id="checkedOut">
-                    <h5>Checked Out</h5>
-                    <ul class="list-group">
-                        {{!-- for each checked out book --}}
-                        {{!-- <li class="list-group-item">{{book.title}}</li>
-                        <li class="list-group-item">{{book.title}}</li> --}}
+        {{!-- if book us checked user logged in , then show book(s) else show message provide button to add
+        books --}}
+        <div class="userList col align-top" id="checkedOut">
+            <h3>Checked Out Books</h3>
+            {{#if user.librarybooks}}
+            <ul class="list-group">
+                {{!-- for each checked out book --}}
+                {{!-- <li class="list-group-item">{{book.title}}</li>
+                <li class="list-group-item">{{book.title}}</li> --}}
 
                 {{!-- Placeholder --}}
-                <li class="list-group-item">The Pillars of the Earth</li>
-                <li class="list-group-item">The Silence of the Lambs</li> 
-
-
-                        {{else}}
-                        <h1>You do not have any checked out books!
-                            {{!-- add link to search or browse page --}}
-                        </h1>
-
-                    </ul>
-                </div>
-                {{/if}}
-
-
-                {{!-- if user is the owner of a library then show all libraries they own , else show message --}}
-                {{#if user.libraries }}
-                <div class="userList col align-top">
-                    <h5> {{user.name}} Libraries</h5>
-                    <ul class="list-group">
-                        {{!-- <li class="list-group-item"> {{library.name}}</li>
-                        <li class="list-group-item"> {{library.name}}</li> --}}
-
-                        {{!-- Placeholder Library Table --}}
-                        <li class="list-group-item">Library One</li>
-                         <li class="list-group-item">Library Two</li>
-
-                        {{else}}
-                        <h6>You do not have any libraries! CLick the button below to create a personlized library.</h6>
-
-                        <button>Click here to create a library{{libraries}}</button>
-
-
-
-                        {{!-- add link or button to create a library--}}
-
-                    </ul>
-
-                </div>
-                {{/if}}
+                {{#each books as |book|}}
+                <li class="list-group-item">{{book.title}}
+                    <button class="btn-primary btn-sm m-3" style="float:right" onclick="checkInBook(this)" id="{{user.librarybooks.id}}">CHECK IN</button>
+                </li>
+                {{/each}}
+            </ul>
+            {{else}}
+            <h4>You do not have any checked out books! Go to the browse page to check out a book from a library.</h4>
+            {{/if}}
         </div>
+
+
+        {{!-- if user is the owner of a library then show all libraries they own , else show message --}}
+        <div class="libray-list col align-top">
+            <h3> {{user.name}} Libraries</h3>
+            {{#if user.libraries }}
+            <ul class="list-group mb-2">
+                {{!-- <li class="list-group-item"> {{library.name}}</li>
+                <li class="list-group-item"> {{library.name}}</li> --}}
+
+                {{!-- Placeholder Library Table --}}
+                {{#each user.libraries as |library|}}
+                <li class="list-group-item">{{library.name}}
+                    <a role="button" onclick="deleteLibrary(this)" class="btn-danger btn-sm ml-1 p-2" style="float:right"
+                        id="{{library.id}}">DELETE</a>
+                    <a href="/dashboard/updatelibrary" class="btn-success btn mr-2 p-2" style="float:right" role="button">EDIT</a>
+                </li>
+                {{/each}}
+            </ul>
+
+            {{else}}
+            <h4>You do not have any libraries! CLick the button below to create a personlized library.</h4>
+
+            {{/if}}
+            <button class="rounded">Click here to create a library{{libraries}}</button>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/deleteFunctions.js"></script>
