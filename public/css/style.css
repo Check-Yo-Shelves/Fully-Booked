@@ -1,4 +1,12 @@
 body {
-    background-image: url("/images/background.jpg");
+    width: 100vw;
+    background-image: url("/images/background2.jpg");
     background-position: center;
+    background-width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+};
+
+main {
+    color: white;
 };
