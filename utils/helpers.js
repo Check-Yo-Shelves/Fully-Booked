@@ -11,4 +11,17 @@ module.exports = {
 
     return `<span for="img" aria-label="book">${book}</span>`;
   },
+  keyword_match: () => {
+    const { Book } = require("../models");
+    const searchBar = document.getElementById("searchBar");
+    const search = searchBar.value;
+    const book = Book;
+    const [title] = book;
+    console.log(title);
+    if (title.includes(search)) {
+      console.log("Matche found");
+    } else {
+      console.log("No results");
+    }
+  },
 };
