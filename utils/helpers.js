@@ -19,7 +19,7 @@ module.exports = {
     const [title] = book;
     console.log(title);
     if (title.includes(search)) {
-      console.log("Matche found");
+      console.log("Match found");
     } else {
       console.log("No results");
     }
