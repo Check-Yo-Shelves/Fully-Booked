@@ -113,6 +113,7 @@ router.get('/libraryinfo/:id', async (req, res) => {
 
 router.get('/bookinfo/:title', async (req, res) => {
   try {
+    // checkKeyword();
     console.log(req.params);
     const bookInfo = await Book.findAll({
       where: {

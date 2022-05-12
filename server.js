@@ -39,3 +39,6 @@ sequelize.sync({ force: false }).then(() => {
 });
 
 // Did it work though?
+
+
+// module.exports = require;

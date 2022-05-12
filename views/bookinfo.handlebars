@@ -1,12 +1,12 @@
 <div class="container pt-5" id="bookInfo">
     <img src="{{book.artwork}}" alt="Book Cover" />
-    <h2>{{book.title}}</h2>
+    <h2>{{keyword_match book.title}}</h2>
     <h4>Written By: {{book.author}}</h4>
     <div class="listContainer container row justify-content-center">
         <div class="userList col align-top" id="checkedOut">
             <ul class="list-group">
-                <li class="list-group-item">ISBN: {{book.isbn}}</li>
-                <li class="list-group-item">Description: {{book.description}}</li>
+                <li class="list-group-item">ISBN: {{keyword_match book.isbn}}</li>
+                <li class="list-group-item">Description: {{keyword_match book.description}}</li>
             </ul>
         </div>
     </div>
