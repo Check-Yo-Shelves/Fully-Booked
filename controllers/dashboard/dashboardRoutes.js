@@ -42,6 +42,12 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
+//create book ()
+//delete book (delete)
+//create library (post)
+//update library (get)
+
+
 
 module.exports = router;
 

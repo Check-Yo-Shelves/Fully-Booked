@@ -1,11 +1,13 @@
-<div class="card " style="width: 18rem;">
-  <img src="{{artwork}}" class="card-img-top" alt="Book Title Cover">
+<div class="card book-card rounded border m-3" style="width: 20rem;">
+  <img src="{{artwork}}" class="card-img-top" alt="{{title}} Cover Art">
   <div class="card-body">
     <h5 class="card-title">{{title}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{author}}</h6>
     {{#if description}}
     <p class="card-text">{{description}}</p>
     {{/if}}
-    <a href="#" class="btn btn-primary">Check Book Out</a>
+    <div class="card-footer">
+      <a onclick="location.href='/dashboard" class="btn btn-primary">Check Out Book</a>
+    </div>
   </div>
 </div>
