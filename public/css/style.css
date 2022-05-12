@@ -1,3 +1,4 @@
 body {
-    background-img: url("./images/");
+    background-image: url("/images/background.jpg");
+    background-position: center;
 };
