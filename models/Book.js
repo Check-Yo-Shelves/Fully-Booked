@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+const { bookApi } = require('../utils/bookApi.js');
 
 class Book extends Model { }
 
@@ -17,29 +18,54 @@ Book.init(
             allowNull: false,
             validate: {
                 isNumeric: true,
+                len: [10, 13],
             },
         },
-        // title: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        // },
-        // author: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        // },
-        // artwork: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        //     validate: {
-        //         isUrl: true,
-        //     },
-        // },
+        title: {
+            type: DataTypes.STRING(),
+            allowNull: true,
+        },
+        author: {
+            type: DataTypes.STRING,
+            // allowNull: false,
+            // Split up the author names if more than one author exists.
+            get() {
+                const rawValue = this.getDataValue('author');
+                return rawValue ? rawValue.split(',') : null;
+            },
+        },
+        artwork: {
+            type: DataTypes.STRING,
+            // allowNull: false,
+            validate: {
+                isUrl: true,
+            },
+        },
+        description: {
+            type: DataTypes.STRING(10000),
+        },
         // genre: {
         //     type: DataTypes.STRING,
-        //     allowNull: false,
+        //     get() {
+        //         const rawValue = this.getDataValue('genre');
+        //         return rawValue ? rawValue.split(',') : null;
+        //     },
         // },
     },
     {
+        hooks: {
+            async beforeBulkCreate(newBookData) {
+                // let bookInfo = await bookApi(newBookData);
+                // newBookData[0].title = bookInfo.title;
+                // newBookData[0].author = bookInfo.author;
+                // newBookData[0].artwork = bookInfo.artwork;
+                return await bookApi(newBookData);
+            },
+            async beforeCreate(newBookData) {
+                // newBookData = await bookApi(newBookData);
+                return await bookApi(newBookData);
+            },
+        },
         sequelize,
         timestamps: false,
         freezeTableName: true,

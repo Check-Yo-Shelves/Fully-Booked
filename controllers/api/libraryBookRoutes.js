@@ -5,7 +5,10 @@ const { LibraryBook, User } = require('../../models');
 router.get('/', async (req, res) => {
     try {
         const libraryBookData = await LibraryBook.findAll({
-            include: [{ model: User }],
+            include: [{
+                model: User,
+                attributes: { exclude: ['password'] }
+            }],
         });
 
         res.status(200).json(libraryBookData);
@@ -18,13 +21,16 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const libraryBookData = await LibraryBook.findByPk(req.params.id, {
-            include: [{ model: User }],
+            include: [{
+                model: User,
+                attributes: { exclude: ['password'] }
+            }],
         });
 
         if (!libraryBookData) {
             res.status(404).json({ message: `No library book found with that id!` });
             return;
-          }
+        }
 
         res.status(200).json(libraryBookData);
     } catch (err) {
@@ -37,14 +43,16 @@ router.put('/:id', async (req, res) => {
     try {
         // Update the libraryBook that is referenced by id with req.body parameters (which are user_id & checked_out property)
         // Logic for this will go in js folder.
+        console.log(req.session, req.params);
         const libraryBookData = await LibraryBook.update(req.body, {
             where: {
-                id: req.params.id,
+                book_id: req.params.id,
+                user_id: req.session.user_id,
             },
         });
 
         if (!libraryBookData) {
-            res.status(404).json({ message: `No library book found with that id!`});
+            res.status(404).json({ message: `No library book found with that id!` });
             return;
         }
 

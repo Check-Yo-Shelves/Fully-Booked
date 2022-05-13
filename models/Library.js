@@ -19,6 +19,7 @@ Library.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
+                // Does a string need to be numeric? Per the docs, this would only allow numbers. However it would be a truthy number in a == scenario.
                 isNumeric: true,
                 len: [5, 5],
             },
@@ -41,9 +42,8 @@ Library.init(
                 isNumeric: true,
             },
         },
-        owner_id: {
+        user_id: {
             type: DataTypes.INTEGER,
-            allowNull: true,
             references: {
                 model: 'user',
                 key: 'id',

@@ -1,0 +1,10 @@
+<div class="justify-center container">
+  <div class="row">
+    <h1 class="text-center">{{library.name}}</h1>
+  </div>
+  <div class="card-deck row">
+    {{#each library.books as |book|}}
+    {{> book-card}}
+    {{/each}}
+  </div>
+</div>

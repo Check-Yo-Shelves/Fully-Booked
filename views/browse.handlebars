@@ -1,12 +1,20 @@
-<div class="container col pt-5">
-  <h1 class="text-left">Browse Libaries</h1>
-  <h6 class="text-left">Click on a library for more details.</h6>
-</div>
-<div class="browseResults container col pt-4">
-  <!-- Here's where our Get All Libraries results will live. -->
-  <p>Result 1</p>
-  <p>Result 2</p>
-  <p>Result 3</p>
-  <p>Result 4</p>
-  <p>Result 5</p>
+<div class="justify-center bg-dark p-2 bg-opacity-50">
+  <div class="container col pt-5">
+    <h1 class="text-left">Browse Libaries</h1>
+    <h6 class="text-left">Click on a library for more details.</h6>
+  </div>
+  <div class="browseResults container col pt-4">
+    <!-- Here's where our Get All Libraries results will live. -->
+    {{#each libraries as |library|}}
+      <div class="card text-dark" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title text-dark">{{library.name}}</h5>
+          <p class="card-text">{{library.address}}</p>
+        </div>
+        <div class="card-body">
+          <button type="button" onclick="location.href='/libraryinfo/{{library.id}}'">View Library Books</button>
+        </div>
+      </div>
+    {{/each}}
+  </div>
 </div>
