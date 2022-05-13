@@ -8,8 +8,10 @@
     {{/if}}
     {{#if logged_in}}
     <div class="card-footer">
-      <a onclick="location.href='/dashboard" class="btn btn-primary">Check Out Book</a>
+      <a onclick="checkOutBook({{id}}" class="btn btn-primary">Check Out Book</a>
     </div>
     {{/if}}
   </div>
 </div>
+
+<script src="/js/checkoutBook.js"></script>
