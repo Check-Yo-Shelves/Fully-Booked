@@ -39,13 +39,14 @@ router.post('/login', async (req, res) => {
 router.post(`/signup`, async (req, res) => {
   try {
     console.log('Signup route OK')
+    console.log(req.body);
     const signupData = await User.create(req.body);
 
     req.session.save(() => {
       req.session.user_id = signupData.id;
       req.session.logged_in = true;
 
-      res.json({ user: userData, message: 'You are now logged in!' });
+      res.json({ user: signupData, message: 'You are now logged in!' });
     });
 
     res.status(200).json(signupData);
