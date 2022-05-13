@@ -20,10 +20,10 @@ const bookApi = async (newBookData) => {
             console.log(`\n`, data.items[0]);
             // Add data to original book model within database
             newBookData[i].title = data.items[0].volumeInfo.title;
-            newBookData[i].author = data.items[0].volumeInfo.authors.join(',');
+            newBookData[i].author = data.items[0].volumeInfo.authors.join(', ');
             newBookData[i].artwork = data.items[0].volumeInfo.imageLinks.thumbnail;
             newBookData[i].description = data.items[0].volumeInfo.description;
-            // newBookData[i].genre = data.items[0].volumeInfo.categories.join(',');
+            // newBookData[i].genre = data.items[0].volumeInfo.categories.join(', ');
 
             console.log("Google response: ", newBookData);
         }
