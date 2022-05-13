@@ -1,28 +1,22 @@
 module.exports = {
-  get_emoji: () => {
-    const randomNum = Math.random();
-    let book = "📗";
+  createLibraryBook: () => {
+    let randomUser = Math.floor(Math.random() * 5);
+    let randomBook = Math.floor(1 + Math.random() * 23);
+    let randomLibrary = Math.floor(1 + Math.random() * 4);
+    let checked_out = true;
 
-    if (randomNum > 0.7) {
-      book = "📘";
-    } else if (randomNum > 0.4) {
-      book = "📙";
+    if (randomUser == 0) {
+      randomUser = null;
+      checked_out = false;
     }
 
-    return `<span for="img" aria-label="book">${book}</span>`;
+    let randomLibraryBook = {
+      library_id: randomLibrary,
+      book_id: randomBook,
+      checked_out: checked_out,
+      user_id: randomUser,
+    }
+
+    return randomLibraryBook;
   },
-  // V2 -- Will Do Keyword Search Once I Learn REGEX
-  // keyword_match: () => {
-  //   const { Book } = require("../models");
-  //   const searchBar = document.getElementById("searchBar");
-  //   const search = searchBar.value;
-  //   const book = Book;
-  //   const [title] = book;
-  //   console.log(title);
-  //   if (title.includes(search)) {
-  //     console.log("Match found");
-  //   } else {
-  //     console.log("No results");
-  //   }
-  // },
 };

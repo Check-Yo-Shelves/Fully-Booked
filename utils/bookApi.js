@@ -9,7 +9,6 @@ const bookApi = async (newBookData) => {
         console.log("Book ISBN", newBookData[i].dataValues.isbn);
         // Create API url using isbn from book creation.
         let url = googleUrl + newBookData[i].dataValues.isbn + "+isbn&key=" + process.env.BOOKKEY;
-        console.log(`\n`, url);
         // Send fetch request to google book api.
         let response = await fetch(url);
         let data = await response.json();
@@ -20,12 +19,15 @@ const bookApi = async (newBookData) => {
             console.log(`\n`, data.items[0]);
             // Add data to original book model within database
             newBookData[i].title = data.items[0].volumeInfo.title;
-            newBookData[i].author = data.items[0].volumeInfo.authors.join(',');
-            newBookData[i].artwork = data.items[0].volumeInfo.imageLinks.thumbnail;
+            newBookData[i].author = data.items[0].volumeInfo.authors.join(', ');
+            console.log(`\n`, data.items[0].volumeInfo.imageLinks);
+            if (data.items[0].volumeInfo.imageLinks) {
+                newBookData[i].artwork = data.items[0].volumeInfo.imageLinks.thumbnail;     
+            } else {
+                newBookData[i].artwork = "/images/no_artwork.jpg"
+            }
             newBookData[i].description = data.items[0].volumeInfo.description;
-            // newBookData[i].genre = data.items[0].volumeInfo.categories.join(',');
-
-            console.log("Google response: ", newBookData);
+            // newBookData[i].genre = data.items[0].volumeInfo.categories.join(', ');
         }
     }
     return newBookData;
