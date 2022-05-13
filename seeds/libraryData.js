@@ -4,7 +4,7 @@ const libraryData = [
     {
         name: "Xena's Library",
         zip_code: "60647",
-        address: "1234 Lake Shore Drive",
+        address: "100 Lake Shore Drive",
         lat: 41.921543,
         lon: -87.702484,
         user_id: 2,
