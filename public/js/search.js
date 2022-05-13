@@ -9,10 +9,10 @@ const searchHandler = async (e) => {
   e.preventDefault();
   const searchBar = document.getElementById("searchBar");
   var search = searchBar.value;
-  //   if (search !== Number) {
-  //       console.error();
-  //       return;
-  //   }
+    // if (search !== Number) {
+    //     console.error();
+    //     return;
+    // }
 
   // Searches by book ID for the present
   console.log(search);
