@@ -8,8 +8,6 @@ const signupFormHandler = async (event) => {
     const zip_code = document.querySelector('#zipcode').value.trim();
     const repeatpw = document.querySelector('#RP').value.trim();
 
-    console.log({ name, email, password, zip_code });
-
     // Might need a way of checking if the email already exists
     if (name && email && password && zip_code) {
       if (password === repeatpw) {

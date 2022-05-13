@@ -16,7 +16,8 @@ const newLibraryHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        alert('Please include a ');
+        alert("Something went wrong");
+        // 404 page redirect here.
       }
     }
   };
