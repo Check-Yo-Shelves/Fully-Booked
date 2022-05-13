@@ -13,8 +13,7 @@
             </div>
 
         </div>
-        {{!-- if book us checked user logged in , then show book(s) else show message provide button to add
-        books --}}
+        {{!-- if book us checked user logged in , then show book(s) else show message provide button to add books --}}
         <div class="userList col align-top" id="checkedOut">
             <h3>Checked Out Books</h3>
             {{#if user.librarybooks}}
@@ -49,7 +48,7 @@
                 <li class="list-group-item">{{library.name}}
                     <a role="button" onclick="deleteLibrary(this)" class="btn-danger btn-sm ml-1 p-2" style="float:right"
                         id="{{library.id}}">DELETE</a>
-                    <a href="/dashboard/updatelibrary" class="btn-success btn mr-2 p-2" style="float:right" role="button">EDIT</a>
+                    <a href="/dashboard/library/{{library.id}}" class="btn-success btn mr-2 p-2" style="float:right" role="button">EDIT</a>
                 </li>
                 {{/each}}
             </ul>
@@ -58,7 +57,7 @@
             <h4>You do not have any libraries! CLick the button below to create a personlized library.</h4>
 
             {{/if}}
-            <button class="rounded">Click here to create a library{{libraries}}</button>
+            <a href="/dashboard/library" role="button" class="btn-success btn mr-2 p-2 rounded">Click here to create a library</a>
 
         </div>
     </div>
