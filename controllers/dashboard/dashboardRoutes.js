@@ -41,14 +41,12 @@ router.get('/', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-//Get methods (passing data to handlebars)
+
 //create book (ISBN)
-// const withAuth = require('../../utils/auth');
 
-
-router.get('/libraries', withAuth, async (req, res) => {
+router.get('/libraries/:id', withAuth, async (req, res) => {
   try {
-    const Book = await User.findAll({
+    const book = await User.findAll({
       // attributes: { exclude: ['password'] },
       order: [['name', 'ISBN']],
     });
@@ -62,55 +60,51 @@ router.get('/libraries', withAuth, async (req, res) => {
   }
 });
 //delete book (delete)
-// todo
-router.delete('/librarybook/:id', withAuth, async (req, res) => {
-  try {
-    const Book = await User.findAll({
-      // attributes: { exclude: ['password'] },
-      order: [['name', 'ISBN']],
-    });
-  }catch{
-    if(err){
-      console.log(err,"Delete book")
-    }else{
-      console.log("Route hit for /librarybook/:id")
-    }
 
+// router.delete('/librarybook/:id', withAuth, async (req, res) => {
+//   try {
+//     const book = await User.findAll({
+//       attributes: { exclude: ['password'] },
+//       order: [['name', 'ISBN']],
+//     });
+//   }catch{
+//     if(err){
+//       console.log(err,"Delete book")
+//     }else{
+//       console.log("Route hit for /librarybook/:id")
+//     }
+
+//   }
+// });
+//create library
+router.get('/library', async (req, res) => {
+  try {
+    res.render('createlibrary', {
+      logged_in: req.session.logged_in,
+    });
+    console.log('Library Created');
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
-//create library (post)
-router.post('/library', withAuth, async (req, res) => {
-  try {
-    const Library = await User.findAll({
-      // attributes: { exclude: ['password'] },
-      order: [['name', 'address']],
-    });
-  }catch{
-    if(err){
-      console.log(err,"Post library")
-    }else{
-      console.log("Route hit for /library")
-    }
 
-  }
-})
-//update library (get)
-// todo
-router.put('/library/:id', withAuth, async (req, res) => {
+router.get('/library/:id', async (req, res) => {
   try {
-    const Library = await User.findAll({
-      // attributes: { exclude: ['password'] },
-      order: [['name', 'address']],
-    });
-  }catch{
-    if(err){
-      console.log(err,"update library")
-    }else{
-      console.log("Route hit for /library/:id")
-    }
+    // Get User's checked owned libraries to display here.
+    const library = await Library.findByPk(req.params.id,
+      {
+        include: [{ model: Book, through: LibraryBook, as: 'book' }],
+      });
 
+    const library = library.get({ plain: true });
+    console.log(library);
+    // Add
+
+    res.render('updatelibrary', { library, logged_in: req.session.logged_in, });
+  } catch (err) {
+    res.status(500).json(err);
   }
-})
+});
 
 module.exports = router;
 
