@@ -14,49 +14,49 @@
   </head>
   <body class="text-white" style="background-color: #F5EBD7;">
     <header
-      class="display-flex align-center row p-2"
+      class="display-flex align-center row my-0 p-2 shadow p-3 mb-5 rounded"
       style="background-color: #A6B7BE; overflow-x: hidden;"
     >
       {{! Add icon either before or after nav }}
-      <img src="/images/logo.png" alt="Fully Booked Logo" class="col text-left" style=""/>
+      <img src="/images/logo.png" alt="Fully Booked Logo" class="ps-4" style="max-width: 25%; height: 100px; width: auto;"/>
       <nav class="col p-3 text-right">
         <button
           onclick="location.href='/'"
-          class="btn btn-primary btn-outline-light"
+          class="btn btn-primary btn-outline-light text-dark"
           id="home"
-          style="background-color: #C09880;"
+          style="background-color: #F5EBD7;"
         >Home</button>
         <button
           onclick="location.href='/browse'"
-          class="btn btn-primary btn-outline-light"
+          class="btn btn-primary btn-outline-light text-dark"
           id="libraries"
-          style="background-color: #C09880;"
+          style="background-color: #F5EBD7;"
         >Browse Libraries</button>
         <button
           onclick="location.href='/search'"
-          class="btn btn-primary btn-outline-light"
+          class="btn btn-primary btn-outline-light text-dark"
           id="search"
-          style="background-color: #C09880;"
+          style="background-color: #F5EBD7;"
           s
         >Search</button>
         {{#if logged_in}}
           <button
             onclick="location.href='/dashboard'"
-            class="btn btn-primary btn-outline-light"
+            class="btn btn-primary btn-outline-light text-dark"
             id="dashboard"
-            style="background-color: #C09880;"
+            style="background-color: #F5EBD7;"
           >Dashboard</button>
           <button
-            class="btn btn-primary btn-outline-light"
+            class="btn btn-primary btn-outline-light text-dark"
             id="logout"
-            style="background-color: #C09880;"
+            style="background-color: #F5EBD7;"
           >Logout</button>
         {{else}}
           <button
             onclick="location.href='/login'"
-            class="btn btn-primary btn-outline-light"
+            class="btn btn-primary btn-outline-light text-dark"
             id="login"
-            style="background-color: #C09880;"
+            style="background-color: #F5EBD7;"
           >Login</button>
         {{/if}}
       </nav>
@@ -64,7 +64,7 @@
     <main class="container container-fluid mt-5">
       {{{body}}}
     </main>
-    <footer class="text-center text-white mt-5">
+    <footer class="text-center text-dark mt-5 pb-3">
       &copy; 2022 - Miguel Escobar, Andrew Moody, & Natalie Triffo.
     </footer>
     {{#if logged_in}}
