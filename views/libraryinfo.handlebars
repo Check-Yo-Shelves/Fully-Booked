@@ -3,8 +3,15 @@
     <h1 class="text-center">{{library.name}}</h1>
   </div>
   <div class="card-deck row">
+    {{#if logged_in}}
+    {{#each library.books as |book|}}
+    {{> book-card logged_in=true }}
+    {{/each}}
+    {{else}}
     {{#each library.books as |book|}}
     {{> book-card}}
     {{/each}}
+    {{/if}}
+
   </div>
 </div>
