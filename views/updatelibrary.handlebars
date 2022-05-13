@@ -1,0 +1,41 @@
+{{!-- 
+two forms 
+1. Update library
+
+2.Add ISBN number to library (creating a new book)
+
+ --}}
+
+ <form class="container create-library">
+    <div class="row justify-content-center form-group">
+        <div class="col-6 m-2 border rounded">
+            <h3>If you would like to update your Library please update the following information. A 5 digit zip is required to update your library.</h3>
+            <label for="exampleFormControlInput1">Updated library Name</label>
+            <input type="text" class="form-control" id="name" placeholder="My Updated Library">
+            <br>
+            <label for="exampleFormControlInput1">Updated library adress</label>
+            <input type="text" class="form-control" id="address" placeholder="123 Fake Street">
+            <br>
+            <label for="exampleFormControlInput1">Are you still in the same Zip-Code</label>
+            <input type="number" class="form-control" id="zipcode" placeholder="5 Digit Zip Code">
+            <br>
+        </div>
+        <div class="col-6 m-2 border rounded">
+            <button type="submit" class="create-library m-1">Update Library</button>
+        </div>
+    </div>
+</form>
+
+<form class="container create-library">
+    <div class="row justify-content-center form-group">
+        <div class="col-6 m-2 border rounded">
+            <h3>In order to all a new book to your library, please fll out the following information.</h3>
+            <label for="exampleFormControlInput1">What is the ISBN for your book</label>
+            <input type="text" class="form-control" id="name" placeholder="ISBN number ">
+            
+        </div>
+        <div class="col-6 m-2 border rounded">
+            <button type="submit" class="create-library m-1">Add new book</button>
+        </div>
+    </div>
+</form>
