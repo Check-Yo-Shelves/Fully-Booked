@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Handlebars",
+        "body": "Handlebars allows you to dynamically create HTML pages"
+    },
+    {
+        "title": "MVC Model",
+        "body": "Am I the only one who thinks the MVC model is hard to grasp?"
+    },
+    {
+        "title": "Routes",
+        "body": "The following are best practices for routes: A) Don't be silly, do what you want."
+    },
+    {
+        "title": "Node.JS Question",
+        "body": "Does anyone know how to install npm packages in node.js?"
+    },
+    {
+        "title": "React Tutoring",
+        "body": "I am willing to tutor you in React. Email me for more details."
+    }
+]
