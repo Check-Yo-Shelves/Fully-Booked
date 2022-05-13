@@ -91,12 +91,12 @@ router.get('/library', async (req, res) => {
 router.get('/library/:id', async (req, res) => {
   try {
     // Get User's checked owned libraries to display here.
-    const library = await Library.findByPk(req.params.id,
+    const libraryData = await Library.findByPk(req.params.id,
       {
         include: [{ model: Book, through: LibraryBook, as: 'book' }],
       });
 
-    const library = library.get({ plain: true });
+    const library = libraryData.get({ plain: true });
     console.log(library);
     // Add
 
