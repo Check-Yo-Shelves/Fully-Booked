@@ -1,31 +1,111 @@
-const router = require('express').Router();
-const { User, Post } = require(`../models`);
-const withAuth = require(`../utils/auth`);
+const router = require("express").Router();
+const { User, Library, LibraryBook, Book } = require("../models");
+const withAuth = require("../utils/auth");
+const { Op } = require("sequelize");
 
-
-router.get('/', async (req, res) => {
-    // Grab all posts to render through handlebars
-    try {
-        const postData = await Post.findAll();
-        const posts = postData.map((post => post.get({ plain: true })));
-
-        res.render('home', { posts })
-    } catch (err) {
-        res.status(500).json(err);
-    }
+//
+router.get("/", async (req, res) => {
+  try {
+    res.render("homepage", {
+      logged_in: req.session.logged_in,
+    });
+    console.log("Root route OK");
+    // Status
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.get('/dashboard', withAuth, async (req, res) => {
-    // Grab all posts belonging to user stored in cookie to render through handlebars. If not logged in, redirect to login page
+router.get("/browse", async (req, res) => {
+  try {
+    const libraryData = await Library.findAll({
+      include: [{ model: Book, through: LibraryBook, as: "books" }],
+    });
+    const libraries = libraryData.map((library) =>
+      library.get({ plain: true })
+    );
+
+    res.render("browse", {
+      libraries,
+      logged_in: req.session.logged_in,
+    });
+    console.log("Browse route OK");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-router.get('/login', (req, res) => {
-    if (req.session.logged_in) {
-        res.redirect('/dashboard');
-        return;
-    }
-
-    res.render('login');
+router.get("/search", async (req, res) => {
+  try {
+    res.render("search", {
+      logged_in: req.session.logged_in,
+    });
+    console.log("Search route OK");
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+router.get("/login", (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect("/dashboard");
+    console.log("Login route OK");
+    return;
+  }
+
+  res.render("login");
+});
+
+router.get("/libraryinfo/:id", async (req, res) => {
+  try {
+    // Get User's checked owned libraries to display here.
+    const libraryData = await Library.findByPk(req.params.id, {
+      include: [{ model: Book, through: LibraryBook, as: "books" }],
+    });
+
+    const library = libraryData.get({ plain: true });
+    console.log(library);
+    // Add
+
+    res.render("libraryinfo", { library, logged_in: req.session.logged_in });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Search by title or author
+router.get("/bookinfo/:title", async (req, res) => {
+  try {
+    // checkKeyword();
+    console.log(req.params);
+    // const keywords = ["%Dalek%", "%Project", "%Fox", "%Fantastic"];
+    const bookInfo = await Book.findAll({
+      where: {
+        [Op.or]: [
+          {
+            title: {
+              [Op.like]: `%${req.params.title}%`,
+            },
+          },
+          {
+            author: {
+              [Op.like]: `%${req.params.title}%`,
+            },
+          },
+        ],
+      },
+    });
+
+    const booksFound = bookInfo.map((book) => book.get({ plain: true }));
+    const thing = booksFound;
+    const [book] = thing;
+    console.log(book.title);
+    res.render("bookinfo", { book, logged_in: req.session.logged_in });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 
 module.exports = router;
