@@ -52,21 +52,21 @@ router.get("/:zip_code", async (req, res) => {
 // Add a new library (POST)
 // WORKS
 router.post('/', async (req, res) => {
-  let geoResponse = await geoCoder.geocode(req.body.address, req.body.zip_code);
-  let newLibrary = {
-    name: req.body.name,
-    zip_code: req.body.zip_code,
-    address: req.body.address,
-    user_id: req.session.user_id,
-    lat: 41.900589,
-    lon: -87.679611,
-  };
-  if (geoResponse) {
-    newLibrary.lat = geoResponse[0].latitude;
-    newLibrary.lon = geoResponse[0].longitude;
-  }
-
   try {
+    let geoResponse = await geoCoder.geocode(req.body.address, req.body.zip_code);
+    let newLibrary = {
+      name: req.body.name,
+      zip_code: req.body.zip_code,
+      address: req.body.address,
+      user_id: req.session.user_id,
+      lat: 41.900589,
+      lon: -87.679611,
+    };
+    if (geoResponse) {
+      newLibrary.lat = geoResponse[0].latitude;
+      newLibrary.lon = geoResponse[0].longitude;
+    }
+
     const libraryData = await Library.create(newLibrary);
     res.status(200).json(libraryData);
   } catch (err) {
