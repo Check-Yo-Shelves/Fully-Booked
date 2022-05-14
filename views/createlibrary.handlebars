@@ -1,18 +1,25 @@
-<h4 class="text-center" style="font-family: 'Comfortaa', cursive;">To update your Library please provide the following info.</h4>
+<h4 class="text-center" style="font-family: 'Comfortaa', cursive;">To update your Library please provide the following
+    info.</h4>
 <br>
-<h6 class="text-center" style="font-family: 'Comfortaa', cursive;"><em>A 5 digit zip code is required to update your library.</em></h6>
+<h6 class="text-center" style="font-family: 'Comfortaa', cursive;"><em>A 5 digit zip code is required to update your
+        library.</em></h6>
 <div class="container row align-items-center bg-dark p-2 bg-opacity-25 shadow rounded">
-  <form class="align-middle justify-content-center text-center rounded" style="font-family: 'Comfortaa', cursive;">
-    <div class="shadow rounded m-2 py-2"  style="background-color: rgba(245, 235, 215, 0.1);">
-        <form class="create-library row align-items-center justify-content-center text-center rounded py-2" style="font-family: 'Comfortaa', cursive;">
-            <label for="exampleFormControlInput1">Library Name</label>
-            <input class="d-grid gap-2 col-4 mx-auto my-3 rounded" type="text" placeholder="New Library Name" name="search" id="name"/>
-            <label for="exampleFormControlInput1">Address</label>
-            <input class="d-grid gap-2 col-4 mx-auto my-3 rounded" type="text" placeholder="123 Fake Street" name="search" id="address"/>
-            <label for="exampleFormControlInput1">Zip Code</label>
-            <input class="d-grid gap-2 col-4 mx-auto my-3 rounded" type="text" placeholder="5 Digit Zip Code" name="search" id="zipcode"/>
-            <button class="btn btn-outline-dark shadow d-grid gap-2 col-2 mx-auto rounded my-3" type="submit" id="searchBtn" style="background-color: #A6B7BE">Create Library</button>
-        </form>
-    </div>
+    <form class="create-library align-middle justify-content-center text-center rounded" style="font-family: 'Comfortaa', cursive;">
+        <div class="shadow rounded m-2 py-2" style="background-color: rgba(245, 235, 215, 0.1);">
+            {{!-- <form class="create-library row align-items-center justify-content-center text-center rounded py-2"
+                style="font-family: 'Comfortaa', cursive;"> --}}
+                <label for="exampleFormControlInput1">Library Name</label>
+                <input class="d-grid gap-2 col-4 mx-auto my-3 rounded" type="text" placeholder="New Library Name"
+                    name="search" id="name" />
+                <label for="exampleFormControlInput1">Address</label>
+                <input class="d-grid gap-2 col-4 mx-auto my-3 rounded" type="text" placeholder="123 Fake Street"
+                    name="search" id="address" />
+                <label for="exampleFormControlInput1">Zip Code</label>
+                <input class="d-grid gap-2 col-4 mx-auto my-3 rounded" type="text" placeholder="5 Digit Zip Code"
+                    name="search" id="zipcode" />
+                <button class="btn btn-outline-dark shadow d-grid gap-2 col-2 mx-auto rounded my-3" type="submit"
+                    id="searchBtn" style="background-color: #A6B7BE">Create Library</button>
+        </div>
+    </form>
 </div>
 <script src="/js/newlibrary.js"></script>
