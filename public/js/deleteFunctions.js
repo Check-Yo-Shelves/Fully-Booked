@@ -8,6 +8,7 @@ let deleteLibrary = async (library_id) => {
     if (response.ok) {
         document.location.replace('/dashboard');
     } else {
-        alert('Failed to delete library. Please try again later.');
+        // alert('Failed to delete library. Please try again later.');
+        location.replace(`/404`);
     }
 };

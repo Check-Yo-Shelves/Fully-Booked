@@ -38,27 +38,38 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// This route allows both checking libraryBook both in and out.
-router.put('/:id', async (req, res) => {
+// This route allows checking a libraryBook out.
+router.put('/checkout/:id', async (req, res) => {
     try {
         console.log(req.session, req.params);
-        let libraryBookData
-        if (req.body.checked_out) {
-            req.body.user_id = req.session.user_id;
-            libraryBookData = await LibraryBook.update(req.body, {
-                where: {
-                    id: req.params.id,
-                },
-            });
-        } else {
-            req.body.user_id = null;
-            libraryBookData = await LibraryBook.update(req.body, {
-                where: {
-                    book_id: req.params.id,
-                    user_id: req.session.user_id,
-                },
-            });
+        req.body.user_id = req.session.user_id;
+        const libraryBookData = await LibraryBook.update(req.body, {
+            where: {
+                id: req.params.id,
+            },
+        });
+
+        if (!libraryBookData) {
+            res.status(404).json({ message: `No library book found with that id!` });
+            return;
         }
+
+        res.status(200).json(libraryBookData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// This route allows checking a libraryBook in (return).
+router.put('/checkin/:id', async (req, res) => {
+    try {
+        console.log(req.session, req.params);
+        const libraryBookData = await LibraryBook.update(req.body, {
+            where: {
+                book_id: req.params.id,
+                user_id: req.session.user_id,
+            },
+        });
 
         if (!libraryBookData) {
             res.status(404).json({ message: `No library book found with that id!` });

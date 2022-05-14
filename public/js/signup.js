@@ -19,10 +19,12 @@ const signupFormHandler = async (event) => {
         if (response.ok) {
           document.location.replace('/dashboard');
         } else {
-          alert('Please use a different email than the one selected');
+          // alert('Please use a different email than the one selected');
+          location.replace(`/404`);
         }
       } else {
-        alert("Passwords do not match. Please try again.");
+        // alert("Passwords do not match. Please try again.");
+        location.replace(`/404`);
       }
     }
   };
