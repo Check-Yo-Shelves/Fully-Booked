@@ -19,7 +19,7 @@ const signupFormHandler = async (event) => {
         if (response.ok) {
           document.location.replace('/dashboard');
         } else {
-          alert('Failed to log in. Please try again later.');
+          alert('Please use a different email than the one selected');
         }
       } else {
         alert("Passwords do not match. Please try again.");

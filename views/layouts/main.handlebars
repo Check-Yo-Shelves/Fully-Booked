@@ -10,63 +10,78 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Comfortaa:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body class="text-white" style="background-color: #F5EBD7;">
-    <header
-      class="display-flex align-center row p-2"
-      style="background-color: #A6B7BE; overflow-x: hidden;"
-    >
-      {{! Add icon either before or after nav }}
-      <img src="/images/logo.png" alt="Fully Booked Logo" class="col text-left" />
-      <nav class="col p-3 text-right">
-        <button
-          onclick="location.href='/'"
-          class="btn btn-primary btn-outline-light"
-          id="home"
-          style="background-color: #C09880;"
-        >Home</button>
-        <button
-          onclick="location.href='/browse'"
-          class="btn btn-primary btn-outline-light"
-          id="libraries"
-          style="background-color: #C09880;"
-        >Browse Libraries</button>
-        <button
-          onclick="location.href='/search'"
-          class="btn btn-primary btn-outline-light"
-          id="search"
-          style="background-color: #C09880;"
-          s
-        >Search</button>
-        {{#if logged_in}}
-          <button
-            onclick="location.href='/dashboard'"
-            class="btn btn-primary btn-outline-light"
-            id="dashboard"
-            style="background-color: #C09880;"
-          >Dashboard</button>
-          <button
-            class="btn btn-primary btn-outline-light"
-            id="logout"
-            style="background-color: #C09880;"
-          >Logout</button>
-        {{else}}
-          <button
-            onclick="location.href='/login'"
-            class="btn btn-primary btn-outline-light"
-            id="login"
-            style="background-color: #C09880;"
-          >Login</button>
-        {{/if}}
-      </nav>
-    </header>
-    <main class="container container-fluid mt-5">
-      {{{body}}}
-    </main>
-    <footer class="text-center text-white mt-5">
-      &copy; 2022 - Miguel Escobar, Andrew Moody, & Natalie Triffo.
-    </footer>
+  <body class="text-white w-100" style="background-image: url('/images/background.png'); overflow-x: hidden;">
+    <div style="background-image: url('/images/background.png');">
+      <div style="background-color: rgba(245, 235, 215, 0.5);">
+        <header
+          class="display-flex align-center row my-0 p-2 shadow p-3 mb-5 rounded"
+          style="background-color: #A6B7BE;"
+        >
+          {{! Add icon either before or after nav }}
+          <img
+            src="images/logoNav.png"
+            alt="Fully Booked Logo"
+            class=""
+            style="max-width: 25%; height: 100px; width: auto;"
+          />
+          <nav class="col text-right" style="font-family: 'Comfortaa', cursive;">
+            <button
+              onclick="location.href='/'"
+              class="btn btn-primary btn-outline-light text-dark"
+              id="home"
+              style="background-color: #F5EBD7;"
+            >Home</button>
+            <button
+              onclick="location.href='/browse'"
+              class="btn btn-primary btn-outline-light text-dark"
+              id="libraries"
+              style="background-color: #F5EBD7;"
+            >Browse Libraries</button>
+            <button
+              onclick="location.href='/search'"
+              class="btn btn-primary btn-outline-light text-dark"
+              id="search"
+              style="background-color: #F5EBD7;"
+              s
+            >Search</button>
+            {{#if logged_in}}
+              <button
+                onclick="location.href='/dashboard'"
+                class="btn btn-primary btn-outline-light text-dark"
+                id="dashboard"
+                style="background-color: #F5EBD7;"
+              >Dashboard</button>
+              <button
+                class="btn btn-primary btn-outline-light text-dark"
+                id="logout"
+                style="background-color: #F5EBD7;"
+              >Logout</button>
+            {{else}}
+              <button
+                onclick="location.href='/login'"
+                class="btn btn-primary btn-outline-light text-dark"
+                id="login"
+                style="background-color: #F5EBD7;"
+              >Login</button>
+            {{/if}}
+          </nav>
+        </header>
+        <main class="container container-fluid mt-5">
+          {{{body}}}
+        </main>
+        <footer class="text-center text-dark mt-5 pb-3" style="font-family: 'Comfortaa', cursive;">
+          &copy; 2022 - Miguel Escobar, Andrew Moody, & Natalie Triffo.
+        </footer>
+      </div>
+    </div>
     {{#if logged_in}}
       <script src="/js/logout.js"></script>
     {{/if}}
