@@ -62,4 +62,22 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+router.delete('/:id', async (req, res) => {
+    try {
+        const librarybookData = await LibraryBook.destroy({
+            where: {
+                id: req.params.id,
+            },
+        });
+
+        if (!librarybookData) {
+            res.status(404).json({ message: 'Book not found' });
+            return;
+        }
+        res.status(200).json({ message: `Book with ID: ${req.params.id} deleted.` })
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;

@@ -78,7 +78,20 @@ router.post('/', async (req, res) => {
 // WORKS
 router.put('/:id', async (req, res) => {
   try {
-    const libraryData = await Library.update(req.body, {
+    let geoResponse = await geoCoder.geocode(req.body.address, req.body.zip_code);
+    let updatedLibrary = {
+      name: req.body.name,
+      zip_code: req.body.zip_code,
+      address: req.body.address,
+      user_id: req.session.user_id,
+      lat: 41.900589,
+      lon: -87.679611,
+    };
+    if (geoResponse) {
+      updatedLibrary.lat = geoResponse[0].latitude;
+      updatedLibrary.lon = geoResponse[0].longitude;
+    }
+    const libraryData = await Library.update(updatedLibrary, {
       where: {
         id: req.params.id,
       },

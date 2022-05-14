@@ -8,13 +8,13 @@ router.post('/', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    Book.findAll({ include: [{ model: Library, through: LibraryBook, as: 'libraries' }]})
+    Book.findAll({ include: [{ model: Library, through: LibraryBook, as: 'libraries' }] })
         .then(books => res.json(books))
         .catch(err => res.status(404).json({ nobooksfound: 'Book not found' }));
 });
 
 router.get('/:id', (req, res) => {
-    Book.findByPk(req.params.id, { include: [{ model: Library, through: LibraryBook, as: 'libraries'}]})
+    Book.findByPk(req.params.id, { include: [{ model: Library, through: LibraryBook, as: 'libraries' }] })
         .then(book => res.json(book))
         .catch(err => res.status(404).json({ nobookfound: 'Book not found' }));
 });
