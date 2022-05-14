@@ -8,7 +8,7 @@ font-family: 'Comfortaa', cursive; */
 
 body {
     width: 100vw;
-    backround-image: url("images/background.png");
+    backround-image: url("/images/background.png");
     background-position: center;
     background-width: auto;
     background-size: cover;
