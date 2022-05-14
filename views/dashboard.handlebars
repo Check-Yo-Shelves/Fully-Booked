@@ -23,7 +23,7 @@
   >
     <div
       id="userCheckedOutBooks"
-      class="container row row-cols-4 g-1 text-center"
+      class="container row row-cols-4 g-1 text-center d-flex"
       style="font-family: 'Comfortaa', cursive;"
     >
       {{#if user.librarybooks}}
@@ -52,15 +52,15 @@
       {{/if}}
     </div>
 
-    <div class="library-list col" style="font-family: 'Comfortaa', cursive;">
+    <div class="library-list col d-flex flex-column justify-content-start" style="font-family: 'Comfortaa', cursive;">
       {{#if user.libraries}}
           <a
             href="/dashboard/library"
             role="button"
-            class="btn-success btn p-2 shadow rounded"
-            style="width: 100%;"
+            class="btn-success btn p-2 shadow rounded mt-4"
+            {{!-- style="width: 100%;" --}}
           >Create a library</a>
-        <ul class="list-group m-3 container row row-cols-1 g-1 justify-content center">
+        <ul class="list-group m-3 g-1">
           {{#each user.libraries as |library|}}
             <li
               class="list-group-item d-flex justify-content-between m-2 shadow rounded"

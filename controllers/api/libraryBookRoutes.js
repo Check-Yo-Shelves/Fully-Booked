@@ -42,17 +42,23 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         console.log(req.session, req.params);
+        let libraryBookData
         if (req.body.checked_out) {
             req.body.user_id = req.session.user_id;
+            libraryBookData = await LibraryBook.update(req.body, {
+                where: {
+                    id: req.params.id,
+                },
+            });
         } else {
             req.body.user_id = null;
+            libraryBookData = await LibraryBook.update(req.body, {
+                where: {
+                    book_id: req.params.id,
+                    user_id: req.session.user_id,
+                },
+            });
         }
-        console.log(req.body);
-        const libraryBookData = await LibraryBook.update(req.body, {
-            where: {
-                id: req.params.id,
-            },
-        });
 
         if (!libraryBookData) {
             res.status(404).json({ message: `No library book found with that id!` });

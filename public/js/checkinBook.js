@@ -10,7 +10,7 @@ let checkInBook = async (book_id) => {
     });
     console.log(response)
     if (response.ok) {
-        document.location.replace('/dashboard');
+        location.reload();
     } else {
         alert('Failed to return the book. Please try again later.');
     }
