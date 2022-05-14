@@ -14,6 +14,7 @@ let checkOutBook = async (book_id) => {
         location.reload();
     }
     else {
-        alert('Failed to check out the book. Please try again later.');
+        // alert('Failed to check out the book. Please try again later.');
+        location.replace(`/404`);
     }
 };

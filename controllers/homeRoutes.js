@@ -107,10 +107,10 @@ router.get("/bookinfo/:title", async (req, res) => {
 
 router.get('/*', async (req, res) => {
   try {
-    res.render("");
+    res.render("404page");
   }catch (err) {
     res.status(500).json(err);
   }
-})
+});
 
 module.exports = router;

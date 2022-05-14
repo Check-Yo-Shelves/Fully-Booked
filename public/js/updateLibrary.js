@@ -17,8 +17,9 @@ const updateLibraryHandler = async (event) => {
       if (response.ok) {
         document.location.replace(`/dashboard/library/${library_id}`);
       } else {
-        alert("Something went wrong");
+        // alert("Something went wrong");
         // 404 page redirect here.
+        location.replace(`/404`);
       }
     }
   };

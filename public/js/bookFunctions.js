@@ -30,8 +30,9 @@ const createBookHandler = async (event) => {
                 if (response.ok) {
                     document.location.replace(`/dashboard/library/${lib_id}`);
                 } else {
-                    alert('Failed to create book. Please try again later.');
+                    // alert('Failed to create book. Please try again later.');
                     // redirect to 404
+                    location.replace(`/404`);
                 }
             } else {
                 // If no book exists, then create book, then GET that book info, and do the above
@@ -55,21 +56,24 @@ const createBookHandler = async (event) => {
                         document.location.replace(`/dashboard/library/${lib_id}`);
                         console.log(`\nWE DID IT`);
                     } else {
-                        alert('Failed to create book. Please try again later.');
+                        // alert('Failed to create book. Please try again later.');
                         // redirect to 404
+                        location.replace(`/404`);
                     }
                 } else {
-                    alert('Failed to create book. Please try again later.');
+                    // alert('Failed to create book. Please try again later.');
                     // redirect to 404
+                    location.replace(`/404`);
                 }
             }
         } else {
-            alert('Please provide a valid ISBN.');
-            // Put alert text underneath search bar
+            // alert('Please provide a valid ISBN.');
+            location.replace(`/404`);
         }
     } else {
-        alert('Please provide a 10 or 13 digit ISBN.');
+        // alert('Please provide a 10 or 13 digit ISBN.');
         // Put alert text underneath search bar
+        location.replace(`/404`);
     }
 };
 

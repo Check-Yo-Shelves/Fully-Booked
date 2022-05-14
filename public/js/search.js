@@ -2,12 +2,14 @@
 // drop down to select types of searches
 // search by ISBN
 
+const res = require("express/lib/response");
+
 // search by Name if we lucky
 
 // Use this to render a new page with book info.
 const searchHandler = async (e) => {
   e.preventDefault();
-  const searchBar = document.getElementById("searchBar");
+  const searchBar = document.getElementById("searchBtn");
   var search = searchBar.value;
     // if (search !== Number) {
     //     console.error();
@@ -30,12 +32,12 @@ const searchHandler = async (e) => {
       document.location.replace(`/bookinfo/${search}`);
     }
   } else {
-    alert("No results. Please try your search again.");
+    // alert("No results. Please try your search again.");
+    location.replace(`/404`);
   }
 };
 
 document.getElementById("searchBtn").addEventListener("click", (e) => {
   searchHandler(e);
   console.log("Click Event");
-  e.preventDefault;
 });
