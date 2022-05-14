@@ -38,7 +38,7 @@ router.get("/browse", async (req, res) => {
 router.get("/search", async (req, res) => {
   try {
     res.render("search", {
-      logged_in: req.session.logged_in,
+     logged_in: req.session.logged_in,
     });
     console.log("Search route OK");
   } catch (err) {
@@ -95,22 +95,27 @@ router.get("/bookinfo/:title", async (req, res) => {
       },
     });
 
-    const booksFound = bookInfo.map((book) => book.get({ plain: true }));
-    const thing = booksFound;
-    const [book] = thing;
-    console.log(book.title);
-    res.render("bookinfo", { book, logged_in: req.session.logged_in });
+    const books = bookInfo.map((book) => book.get({ plain: true }));
+    // const thing = booksFound;
+    // const [book] = thing;
+    console.log(books);
+
+    if(books.length){
+      res.render("bookinfo", { books, logged_in: req.session.logged_in });
+    } else {
+      res.render("search", { message: "Book not found. Please try again.", logged_in: req.session.logged_in })
+    }
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/*', async (req, res) => {
-  try {
-    res.render("404page");
-  }catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.get('/*', async (req, res) => {
+//   try {
+//     res.render("404page");
+//   }catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
