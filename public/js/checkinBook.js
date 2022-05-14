@@ -1,10 +1,11 @@
 let checkInBook = async (book_id) => {
     console.log("Check-in Book Button Clicked:", book_id);
 
-    const response = await fetch(`/api/librarybook/${book_id}`, {
+    const response = await fetch(`/api/librarybook/checkin/${book_id}`, {
         method: 'PUT',
         body: JSON.stringify({
             checked_out: false,
+            user_id: null,
         }),
         headers: { 'Content-Type': 'application/json' },
     });

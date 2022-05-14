@@ -1,7 +1,7 @@
 let checkOutBook = async (book_id) => {
     console.log("Check-out Book Button Clicked:", book_id);
 
-    const response = await fetch(`/api/librarybook/${book_id}`, {
+    const response = await fetch(`/api/librarybook/checkout/${book_id}`, {
         method: 'PUT',
         body: JSON.stringify({
             checked_out: true,
