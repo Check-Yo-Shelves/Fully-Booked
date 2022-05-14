@@ -1,9 +1,5 @@
 let checkOutBook = async (book_id) => {
     console.log("Check-out Book Button Clicked:", book_id);
-    let checkIn = {
-        checked_out: true,
-    };
-    console.log(checkIn);
 
     const response = await fetch(`/api/librarybook/${book_id}`, {
         method: 'PUT',
