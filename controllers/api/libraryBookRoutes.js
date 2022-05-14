@@ -71,7 +71,6 @@ router.put('/checkin/:id', async (req, res) => {
             },
         });
 
-
         if (!libraryBookData) {
             res.status(404).json({ message: `No library book found with that id!` });
             return;
