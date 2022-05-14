@@ -41,13 +41,16 @@ router.get('/:id', async (req, res) => {
 // This route allows both checking libraryBook both in and out.
 router.put('/:id', async (req, res) => {
     try {
-        // Update the libraryBook that is referenced by id with req.body parameters (which are user_id & checked_out property)
-        // Logic for this will go in js folder.
         console.log(req.session, req.params);
+        if (req.body.checked_out) {
+            req.body.user_id = req.session.user_id;
+        } else {
+            req.body.user_id = null;
+        }
+        console.log(req.body);
         const libraryBookData = await LibraryBook.update(req.body, {
             where: {
-                book_id: req.params.id,
-                user_id: req.session.user_id,
+                id: req.params.id,
             },
         });
 

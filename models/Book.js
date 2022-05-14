@@ -30,7 +30,7 @@ Book.init(
             // Split up the author names if more than one author exists.
             get() {
                 const rawValue = this.getDataValue('author');
-                return rawValue ? rawValue.split(', ') : null;
+                return rawValue ? rawValue.split(',') : null;
             },
         },
         artwork: {

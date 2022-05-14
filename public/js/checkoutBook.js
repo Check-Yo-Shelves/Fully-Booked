@@ -1,14 +1,23 @@
 let checkOutBook = async (book_id) => {
-    console.log("Check-out Book Button Clicked:", book_id)
+    console.log("Check-out Book Button Clicked:", book_id);
+    let checkIn = {
+        checked_out: true,
+    };
+    console.log(checkIn);
 
     const response = await fetch(`/api/librarybook/${book_id}`, {
         method: 'PUT',
+        body: JSON.stringify({
+            checked_out: true,
+        }),
         headers: { 'Content-Type': 'application/json' },
     });
     console.log(response)
     if (response.ok) {
-        document.location.replace('/dashboard');
-    } else {
-        alert('Failed to check in the book. Please try again later.');
+        // document.location.replace('/dashboard');
+        location.reload();
+    }
+    else {
+        alert('Failed to check out the book. Please try again later.');
     }
 };

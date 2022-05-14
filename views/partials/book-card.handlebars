@@ -8,10 +8,12 @@
     {{/if}}
     {{#if logged_in}}
     <div class="card-footer">
-      <a onclick="checkOutBook({{id}}" class="btn btn-primary">Check Out Book</a>
+      {{#if librarybook.checked_out}}
+      <p>Book is out on loan. Please try back later.</p>
+      {{else}}
+      <a onclick="checkOutBook({{librarybook.id}})" class="btn btn-primary">Check Out Book</a>
+      {{/if}}
     </div>
     {{/if}}
   </div>
 </div>
-
-<script src="/js/checkoutBook.js"></script>
