@@ -1,12 +1,13 @@
-<div class="container pt-5" id="bookInfo">
-    <img src="{{book.artwork}}" alt="Book Cover" />
+<div class="container pt-5" id="bookInfo" style="font-family: 'Comfortaa', cursive;">
+    <img src="{{book.artwork}}" alt="Book Cover" class="pb-3" />
     <h2 style="color: black;">{{book.title}}</h2>
-    <h4 style="color: black;">Written By: {{book.author}}</h4>
+    <h4 class="pb-3" style="color: black;">Written By: {{book.author}}</h4>
     <div class="listContainer container row justify-content-center">
-        <div class="userList col align-top" id="checkedOut">
+        <div class="col align-top" id="checkedOut">
             <ul class="list-group">
                 <li class="list-group-item">ISBN: {{book.isbn}}</li>
-                <li class="list-group-item">Description: {{book.description}}</li>
+                <li class="list-group-item">Description:<br/></li>
+                <li class="list-group-item">{{book.description}}</li>
             </ul>
         </div>
     </div>
