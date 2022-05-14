@@ -14,7 +14,8 @@ const loginFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to log in');
+      // alert('Failed to log in');
+      location.replace(`/404`);
     }
   }
 };

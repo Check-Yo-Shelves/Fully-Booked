@@ -13,6 +13,7 @@ let checkInBook = async (book_id) => {
     if (response.ok) {
         location.reload();
     } else {
-        alert('Failed to return the book. Please try again later.');
+        // alert('Failed to return the book. Please try again later.');
+        location.replace(`/404`);
     }
 };
