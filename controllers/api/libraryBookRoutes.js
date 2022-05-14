@@ -62,6 +62,23 @@ router.put('/:id', async (req, res) => {
     }
 });
 
+router.post('/', async (req, res) => {
+    try {
+        console.log(req.session, req.params);
+        let newBook = {
+            user_id: req.session.user_id,
+            library_id: req.body.library_id,
+            book_id: req.body.book_id,
+            checked_out: false,
+        }
+        const libraryBookData = await LibraryBook.create(newBook);
+
+        res.status(200).json(libraryBookData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 router.delete('/:id', async (req, res) => {
     try {
         const librarybookData = await LibraryBook.destroy({
