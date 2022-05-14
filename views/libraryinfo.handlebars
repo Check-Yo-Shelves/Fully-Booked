@@ -1,10 +1,8 @@
+<h1 class="text-center text-dark" style="font-family: 'Caveat', cursive;">{{library.name}}</h1>
 <div class="d-flex justify-content-center bg-dark p-2 bg-opacity-25 shadow mb-5 rounded">
   <div style="background-color: rgba(245, 235, 215, 0.1);">
-    <div class="container container-fluid justify-center container">
-      <div class="row">
-        <h1 class="text-center">{{library.name}}</h1>
-      </div>
-      <div class="card-deck row">
+    <div class="container container-fluid">
+      <div class="card-deck row d-md-flex justify-content-between">
         {{#if logged_in}}
         {{#each library.books as |book|}}
         {{> book-card logged_in=true }}

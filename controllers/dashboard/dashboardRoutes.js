@@ -42,24 +42,6 @@ router.get('/', withAuth, async (req, res) => {
   }
 });
 
-//create book (ISBN)
-
-router.get('/libraries/:id', withAuth, async (req, res) => {
-  try {
-    const book = await User.findAll({
-      // attributes: { exclude: ['password'] },
-      order: [['name', 'ISBN']],
-    });
-  }catch{
-    if(err){
-      console.log(err,"get libraries")
-    }else{
-      console.log("Route hit for /libraries")
-    }
-
-  }
-});
-
 //create library
 router.get('/library', async (req, res) => {
   try {
