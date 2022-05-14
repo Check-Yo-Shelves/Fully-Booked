@@ -24,8 +24,12 @@
 
                 {{!-- Placeholder --}}
                 {{#each books as |book|}}
-                <li class="list-group-item">{{book.title}}
-                    <a role="button" class="btn-primary btn-sm m-3" style="float:right" onclick="checkInBook({{book.id}})">CHECK IN</a>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{book.title}}</div>
+                        {{book.author}}
+                    </div>
+                    <a role="button" class="btn-primary btn-sm p-2 ml-1" onclick="checkInBook({{book.id}})">CHECK IN</a>
                 </li>
                 {{/each}}
             </ul>
@@ -45,19 +49,23 @@
 
                 {{!-- Placeholder Library Table --}}
                 {{#each user.libraries as |library|}}
-                <li class="list-group-item">{{library.name}}
-                    <a role="button" onclick="deleteLibrary({{library.id}})" class="btn-danger btn-sm ml-1 p-2" style="float:right"
-                        id="{{library.id}}">DELETE</a>
-                    <a href="/dashboard/library/{{library.id}}" class="btn-success btn mr-2 p-2" style="float:right" role="button">EDIT</a>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        {{library.name}}
+                    </div>
+                    <a href="/dashboard/library/{{library.id}}" class="btn-success btn m-2 p-1" role="button">EDIT</a>
+                    <a role="button" onclick="deleteLibrary({{library.id}})"
+                        class="btn-danger btn m-2 p-1">DELETE</a>
                 </li>
                 {{/each}}
             </ul>
 
             {{else}}
-            <h4>You do not have any libraries! CLick the button below to create a personlized library.</h4>
+            <h4>You do not have any libraries! Click the button below to create a personlized library.</h4>
 
             {{/if}}
-            <a href="/dashboard/library" role="button" class="btn-success btn mr-2 p-2 rounded">Click here to create a library</a>
+            <a href="/dashboard/library" role="button" class="btn-success btn mr-2 p-2 rounded">Click here to create a
+                library</a>
 
         </div>
     </div>
@@ -65,3 +73,4 @@
 
 
 <script src="/js/deleteFunctions.js"></script>
+<script src="/js/checkinBook.js"></script>

@@ -59,23 +59,7 @@ router.get('/libraries/:id', withAuth, async (req, res) => {
 
   }
 });
-//delete book (delete)
 
-// router.delete('/librarybook/:id', withAuth, async (req, res) => {
-//   try {
-//     const book = await User.findAll({
-//       attributes: { exclude: ['password'] },
-//       order: [['name', 'ISBN']],
-//     });
-//   }catch{
-//     if(err){
-//       console.log(err,"Delete book")
-//     }else{
-//       console.log("Route hit for /librarybook/:id")
-//     }
-
-//   }
-// });
 //create library
 router.get('/library', async (req, res) => {
   try {
@@ -91,13 +75,14 @@ router.get('/library', async (req, res) => {
 router.get('/library/:id', async (req, res) => {
   try {
     // Get User's checked owned libraries to display here.
+    console.log("WE HIT THE LIBRARY/NUMBER ROUTE")
     const libraryData = await Library.findByPk(req.params.id,
       {
-        include: [{ model: Book, through: LibraryBook, as: 'book' }],
+        include: [{ model: Book, through: LibraryBook, as: 'books' }],
       });
 
     const library = libraryData.get({ plain: true });
-    console.log(library);
+    console.log(library.books);
 
     res.render('updatelibrary', { library, logged_in: req.session.logged_in, });
   } catch (err) {
