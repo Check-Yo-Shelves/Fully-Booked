@@ -1,75 +1,98 @@
-<div class="container py-3 text-dark" id="userContainer">
-    <h1 class style="font-family: 'Comfortaa', cursive;">Hello, {{user.name}}</h1>
-    {{!-- <img src="" alt="User Photo" /> --}}
-    <div class="listContainer py-3 container row justify-content-center">
-        <div class="userLinks col">
-            <div class="userList col align-top" id="dashboardLinks">
-                <h4 style="font-family: 'Comfortaa', cursive;">User Settings</h4>
-                <ul class="list-group" style="font-family: 'Comfortaa', cursive;">
-                    <a href="" class="list-group-item">Reading List</a>
-                    <a href="" class="list-group-item">Favorites</a>
-                    <a href="" class="list-group-item">Account</a>
-                </ul>
-            </div>
-        </div>
-        {{!-- if book us checked user logged in , then show book(s) else show message provide button to add books --}}
-        <div class="userList col align-top" id="checkedOut" style="font-family: 'Comfortaa', cursive;">
-            <h4>Checked Out</h4>
-            {{#if user.librarybooks}}
-            <ul class="list-group" style="font-family: 'Comfortaa', cursive;">
-                {{!-- for each checked out book --}}
-                {{!-- <li class="list-group-item">{{book.title}}</li>
-                <li class="list-group-item">{{book.title}}</li> --}}
-
-                {{!-- Placeholder --}}
-                {{#each books as |book|}}
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                        <div class="fw-bold">{{book.title}}</div>
-                        {{book.author}}
-                    </div>
-                    <a role="button" class="btn-primary btn-sm p-2 ml-1" onclick="checkInBook({{book.id}})">CHECK IN</a>
-                </li>
-                {{/each}}
-            </ul>
-            {{else}}
-            <h4>You do not have any checked out books! Go to the browse page to check out a book from a library.</h4>
-            {{/if}}
-        </div>
-
-
-        {{!-- if user is the owner of a library then show all libraries they own , else show message --}}
-        <div class="libray-list col align-top" style="font-family: 'Comfortaa', cursive;">
-            <h4> {{user.name}}'s Libraries</h4>
-            {{#if user.libraries }}
-            <ul class="list-group mb-2">
-                {{!-- <li class="list-group-item"> {{library.name}}</li>
-                <li class="list-group-item"> {{library.name}}</li> --}}
-
-                {{!-- Placeholder Library Table --}}
-                {{#each user.libraries as |library|}}
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                        {{library.name}}
-                    </div>
-                    <a href="/dashboard/library/{{library.id}}" class="btn-success btn m-2 p-1" role="button">Edit</a>
-                    <a role="button" onclick="deleteLibrary({{library.id}})"
-                        class="btn-danger btn m-2 p-1">Delete</a>
-                </li>
-                {{/each}}
-            </ul>
-
-            {{else}}
-            <h4>You do not have any libraries! Click the button below to create a personlized library.</h4>
-
-            {{/if}}
-            <a href="/dashboard/library" role="button" class="btn-success btn mr-2 p-2 rounded">Click here to create a
-                library</a>
-
-        </div>
-    </div>
+<h1
+  class="text-center pb-5 text-dark"
+  style="font-family: 'Caveat', cursive;"
+>Hello, {{user.name}}</h1>
+<div
+  id="dashBoard-listNames"
+  class="row text-dark"
+  style="font-family: 'Caveat', cursive;"
+>
+  <h4 class="text-center col" style="font-family: 'Comfortaa', cursive;">Checked
+    Out</h4>
+  <h4 class="text-center col" style="font-family: 'Comfortaa', cursive;">Manage
+    Libraries</h4>
 </div>
+<div
+  class="container py-3 text-dark row bg-dark p-2 bg-opacity-25 shadow mb-5 rounded"
+  id="userContainer"
+>
+  <div
+    id="userDataContainer"
+    class="row row-cols-2"
+    style="font-family: 'Comfortaa', cursive; background-color: rgba(245, 235, 215, 0.1);"
+  >
+    <div
+      id="userCheckedOutBooks"
+      class="container row row-cols-4 g-1 text-center"
+      style="font-family: 'Comfortaa', cursive;"
+    >
+      {{#if user.librarybooks}}
+        {{#each books as |book|}}
+          <div class="col rounded m-3">
+            <div
+              class="card text-dark shadow m-2 align-center"
+              style="background-color: #F5EBD7; height: 250px;"
+            >
+              <div class="card-body">
+                <h6 class="card-title text-dark text-center">{{book.title}}</h6>
+              </div>
+              <div class="card-footer text-center">
+                <a
+                  role="button"
+                  class="btn btn-outline-dark shadow rounded"
+                  onclick="checkInBook({{book.id}})"
+                  style="background-color: #A6B7BE;"
+                >Return Book</a>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      {{else}}
+        <h4>No books on loan. Go to the browse page to check out a book.</h4>
+      {{/if}}
+    </div>
 
+    <div class="library-list col" style="font-family: 'Comfortaa', cursive;">
+      {{#if user.libraries}}
+          <a
+            href="/dashboard/library"
+            role="button"
+            class="btn-success btn p-2 shadow rounded"
+            style="width: 100%;"
+          >Create a library</a>
+        <ul class="list-group m-3 container row row-cols-1 g-1 justify-content center">
+          {{#each user.libraries as |library|}}
+            <li
+              class="list-group-item d-flex justify-content-between m-2 shadow rounded"
+              style="background-color: #F5EBD7"
+            >
+              <div class="ms-2 me-auto">
+                {{library.name}}
+              </div>
+              <a
+                href="/dashboard/library/{{library.id}}"
+                class="btn btn-outline-dark shadow my-3 mb-3 rounded m-2 p-1"
+                role="button"
+                style="background-color: #A6B7BE;"
+              >Edit</a>
+              <a
+                role="button"
+                onclick="deleteLibrary({{library.id}})"
+                class="btn btn-outline-dark shadow text-white my-3 mb-3 rounded m-2 p-1"
+                style="background-color: red;"
+              >Delete</a>
+            </li>
+          {{/each}}
+        </ul>
+
+      {{else}}
+        <h4>You do not have any libraries! Click the button below to create a
+          personlized library.</h4>
+
+      {{/if}}
+    </div>
+  </div>
+</div>
 
 <script src="/js/deleteFunctions.js"></script>
 <script src="/js/checkinBook.js"></script>
