@@ -13,4 +13,5 @@ If a user does not want to create an account, they are still able to use the web
 <img width="722" alt="Screen Shot 2022-05-14 at 11 54 11 AM" src="https://user-images.githubusercontent.com/97486569/168444445-ad5530cc-ad94-4f35-8dc8-ef0fe7901ef0.png">
 <img width="1430" alt="Screen Shot 2022-05-14 at 11 59 03 AM" src="https://user-images.githubusercontent.com/97486569/168444451-74866c04-007f-4c81-b364-5149e8827a82.png">
 # Group Memebers
+
 Miguel Escobar, Andrew Moody, & Natalie Triffo.
