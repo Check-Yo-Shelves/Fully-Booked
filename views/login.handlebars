@@ -1,70 +1,102 @@
 <h1
   class="text-center text-dark pb-5"
   style="font-family: 'Caveat', cursive;"
->Login / Signup</h1>
-<div class="container row" style="height: 450px;">
-  <div class="col-6">
+>Login / Signup
+</h1>
+<div class="container row">
+  <div class="col">
     <h3
       class="text-left text-dark pb-3"
       style="font-family: 'Caveat', cursive;"
-    >Login</h3>
-    <form class="form login-form text-dark" style="font-family: 'Comfortaa', cursive; border:1px solid #ccc">
-      <div class="form-group">
-        <label for="email-login">Email:</label>
-        <br />
-        <input class="mx-3" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">Password:</label>
-        <br />
-        <input class="mx-3" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button
-          class="btn btn-primary btn-outline-light text-dark"
-          type="submit"
-          id="loginBtn" style="background-color: #A6B7BE;"
-        >Login</button>
-      </div>
-    </form>
+    >Login
+    </h3>
   </div>
-  <div class="col-6">
-    <form
-      class="form signup-form text-dark"
-      style="font-family: 'Comfortaa', cursive; border:1px solid #ccc"
-    >
-      <h3
-        class="text-left text-dark pb-3"
-        style="font-family: 'Caveat', cursive;"
-      >Sign Up</h3>
-      <label for="name">Name: </label>
-      <br />
-      <input class="mx-3" type="text" placeholder="Enter Name" id="name" />
-      <br />
-      <label for="email">Email: </label>
-      <br />
-      <input class="mx-3" type="text" placeholder="Enter Email" id="email" />
-      <br />
-      <label for="password">Password: </label>
-      <br />
-      <input class="mx-3" type="password" placeholder="Enter Password" id="password" />
-      <br />
-      <label for="pass-repeat">Repeat Password: </label>
-      <br />
-      <input class="mx-3" type="password" placeholder="Repeat Password" id="RP" />
-      <br />
-      <label for="zipcode">Zipcode: </label>
-      <br />
-      <input class="" type="text" placeholder="Enter Zipcode" id="zipcode" />
-      <br />
-      <div class="form-group">
-        <button
-          class="btn btn-primary btn-outline-light text-dark"
-          type="submit"
-          id="loginBtn" style="background-color: #A6B7BE;"
-        >Sign Up:</button>
-      </div>
-    </form>
+  <div class="col">
+    <h3
+      class="text-left text-dark pb-3"
+      style="font-family: 'Caveat', cursive;"
+    >Sign Up
+    </h3>
+  </div>
+</div>
+<div
+  class="container row bg-dark p-2 bg-opacity-25 shadow rounded"
+  style="height: auto;"
+>
+  <div class="col-6 rounded p-1 shadow rounded" style="background-color: rgba(245, 235, 215, 0.1);">
+    <div class="col-6" id="loginForm-container">
+      <form
+        class="form login-form text-dark"
+        style="font-family: 'Comfortaa', cursive;"
+      >
+        <div class="form-group">
+          <label for="email-login">Email:</label>
+          <br />
+          <input class="mx-3" type="text" id="email-login" />
+        </div>
+        <div class="form-group">
+          <label for="password-login">Password:</label>
+          <br />
+          <input class="mx-3" type="password" id="password-login" />
+        </div>
+        <div class="form-group">
+          <button
+            class="btn btn-outline-dark shadow"
+            type="submit"
+            id="loginBtn"
+            style="background-color: #A6B7BE;"
+          >Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-6 rounded p-1 shadow rounded" style="background-color: rgba(245, 235, 215, 0.1);">
+    <div class="col-6" id="signupForm-container">
+      <form
+        class="form signup-form text-dark"
+        style="font-family: 'Comfortaa', cursive;"
+      >
+        <label for="name">Name: </label>
+        <br />
+        <input class="mx-3" type="text" placeholder="Enter Name" id="name" />
+        <br />
+        <label for="email">Email: </label>
+        <br />
+        <input class="mx-3" type="text" placeholder="Enter Email" id="email" />
+        <br />
+        <label for="password">Password: </label>
+        <br />
+        <input
+          class="mx-3"
+          type="password"
+          placeholder="Enter Password"
+          id="password"
+        />
+        <br />
+        <label for="pass-repeat">Repeat Password: </label>
+        <br />
+        <input
+          class="mx-3"
+          type="password"
+          placeholder="Repeat Password"
+          id="RP"
+        />
+        <br />
+        <label for="zipcode">Zipcode: </label>
+        <br />
+        <input class="mx-3" type="text" placeholder="Enter Zipcode" id="zipcode" />
+        <br />
+        <div class="form-group">
+          <button
+            class="btn btn-outline-dark shadow"
+            type="submit"
+            id="loginBtn"
+            style="background-color: #A6B7BE;"
+          >Sign Up:</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

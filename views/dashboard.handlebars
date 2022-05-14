@@ -1,23 +1,22 @@
-<div class="container pt-5" id="userContainer">
-    <h2>Hello, {{user.name}}</h2>
+<div class="container py-3 text-dark" id="userContainer">
+    <h1 class style="font-family: 'Comfortaa', cursive;">Hello, {{user.name}}</h1>
     {{!-- <img src="" alt="User Photo" /> --}}
-    <div class="listContainer container row justify-content-center">
-        <div class="userLinks col m-3">
+    <div class="listContainer py-3 container row justify-content-center">
+        <div class="userLinks col">
             <div class="userList col align-top" id="dashboardLinks">
-                <h3>{{user.name}}</h3>
-                <ul class="list-group">
+                <h4 style="font-family: 'Comfortaa', cursive;">User Settings</h4>
+                <ul class="list-group" style="font-family: 'Comfortaa', cursive;">
                     <a href="" class="list-group-item">Reading List</a>
                     <a href="" class="list-group-item">Favorites</a>
                     <a href="" class="list-group-item">Account</a>
                 </ul>
             </div>
-
         </div>
         {{!-- if book us checked user logged in , then show book(s) else show message provide button to add books --}}
-        <div class="userList col align-top" id="checkedOut">
-            <h3>Checked Out Books</h3>
+        <div class="userList col align-top" id="checkedOut" style="font-family: 'Comfortaa', cursive;">
+            <h4>Checked Out</h4>
             {{#if user.librarybooks}}
-            <ul class="list-group">
+            <ul class="list-group" style="font-family: 'Comfortaa', cursive;">
                 {{!-- for each checked out book --}}
                 {{!-- <li class="list-group-item">{{book.title}}</li>
                 <li class="list-group-item">{{book.title}}</li> --}}
@@ -40,8 +39,8 @@
 
 
         {{!-- if user is the owner of a library then show all libraries they own , else show message --}}
-        <div class="libray-list col align-top">
-            <h3> {{user.name}} Libraries</h3>
+        <div class="libray-list col align-top" style="font-family: 'Comfortaa', cursive;">
+            <h4> {{user.name}}'s Libraries</h4>
             {{#if user.libraries }}
             <ul class="list-group mb-2">
                 {{!-- <li class="list-group-item"> {{library.name}}</li>
@@ -53,9 +52,9 @@
                     <div class="ms-2 me-auto">
                         {{library.name}}
                     </div>
-                    <a href="/dashboard/library/{{library.id}}" class="btn-success btn m-2 p-1" role="button">EDIT</a>
+                    <a href="/dashboard/library/{{library.id}}" class="btn-success btn m-2 p-1" role="button">Edit</a>
                     <a role="button" onclick="deleteLibrary({{library.id}})"
-                        class="btn-danger btn m-2 p-1">DELETE</a>
+                        class="btn-danger btn m-2 p-1">Delete</a>
                 </li>
                 {{/each}}
             </ul>

@@ -26,7 +26,7 @@ const libraryData = [
         user_id: 4,
     },
     {
-        name: "Andrew's TEST Library",
+        name: "Andrew's Library",
         zip_code: "60622",
         address: "5678 N Western Ave",
         lat: 41.900589,
