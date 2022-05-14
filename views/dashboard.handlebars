@@ -1,93 +1,64 @@
-<h1
-  class="text-center pb-5 text-dark"
-  style="font-family: 'Caveat', cursive;"
->Hello, {{user.name}}</h1>
-<div
-  id="dashBoard-listNames"
-  class="row text-dark"
-  style="font-family: 'Caveat', cursive;"
->
-  <h4 class="text-center col" style="font-family: 'Comfortaa', cursive;">Checked
-    Out</h4>
+<h1 class="text-center pb-5 text-dark" style="font-family: 'Caveat', cursive;">Hello, {{user.name}}</h1>
+<div id="dashBoard-listNames" class="row text-dark" style="font-family: 'Caveat', cursive;">
+  <h4 class="text-center col" style="font-family: 'Comfortaa', cursive;"> Checked
+    Out Books</h4>
   <h4 class="text-center col" style="font-family: 'Comfortaa', cursive;">Manage
     Libraries</h4>
 </div>
-<div
-  class="container py-3 text-dark row bg-dark p-2 bg-opacity-25 shadow mb-5 rounded"
-  id="userContainer"
->
-  <div
-    id="userDataContainer"
-    class="row row-cols-2"
-    style="font-family: 'Comfortaa', cursive; background-color: rgba(245, 235, 215, 0.1);"
-  >
-    <div
-      id="userCheckedOutBooks"
-      class="container row row-cols-4 g-1 text-center d-flex"
-      style="font-family: 'Comfortaa', cursive;"
-    >
-      {{#if user.librarybooks}}
-        {{#each books as |book|}}
-          <div class="col rounded m-3">
-            <div
-              class="card text-dark shadow m-2 align-center"
-              style="background-color: #F5EBD7; height: 250px;"
-            >
-              <div class="card-body">
-                <h6 class="card-title text-dark text-center">{{book.title}}</h6>
-              </div>
-              <div class="card-footer text-center">
-                <a
-                  role="button"
-                  class="btn btn-outline-dark shadow rounded"
-                  onclick="checkInBook({{book.id}})"
-                  style="background-color: #A6B7BE;"
-                >Return Book</a>
-              </div>
-            </div>
+<div class="container py-3 text-dark row bg-dark p-2 bg-opacity-25 shadow mb-5 rounded" id="userContainer">
+  <div id="userDataContainer" class="row row-cols-2"
+    style="font-family: 'Comfortaa', cursive; background-color: rgba(245, 235, 215, 0.1);">
+    {{#if user.librarybooks}}
+    <div id="userCheckedOutBooks" class="container row row-cols-4 g-1 text-center d-flex"
+      style="font-family: 'Comfortaa', cursive;">
+      {{#each books as |book|}}
+      <div class="col rounded m-3">
+        <div class="card text-dark shadow m-2 align-center" style="background-color: #F5EBD7; height: 250px;">
+          <div class="card-body">
+            <h6 class="card-title text-dark text-center">{{book.title}}</h6>
           </div>
-        {{/each}}
-      {{else}}
-        <h4>No books on loan. Go to the browse page to check out a book.</h4>
-      {{/if}}
+          <div class="card-footer text-center">
+            <a role="button" class="btn btn-outline-dark shadow rounded" onclick="checkInBook({{book.id}})"
+              style="background-color: #A6B7BE;">Return Book</a>
+          </div>
+        </div>
+      </div>
     </div>
+    {{/each}}
+    {{else}}
+    <div id="userCheckedOutBooks" class="container d-flex flex-column justify-content-center px-3"
+      style="font-family: 'Comfortaa', cursive;">
+      <div class="row">
+        <h4 class="pt-4">No books on loan. Go to the browse page to check out a book.</h4>
+      </div>
+      <div class="row">
+        <a href="/browse" role="button" class="btn-success btn p-2 shadow rounded mt-4">Browse Libraries</a>
+      </div>
+    </div>
+    {{/if}}
 
     <div class="library-list col d-flex flex-column justify-content-start" style="font-family: 'Comfortaa', cursive;">
       {{#if user.libraries}}
-          <a
-            href="/dashboard/library"
-            role="button"
-            class="btn-success btn p-2 shadow rounded mt-4"
-            {{!-- style="width: 100%;" --}}
-          >Create a library</a>
-        <ul class="list-group m-3 g-1">
-          {{#each user.libraries as |library|}}
-            <li
-              class="list-group-item d-flex justify-content-between m-2 shadow rounded"
-              style="background-color: #F5EBD7"
-            >
-              <div class="ms-2 me-auto">
-                {{library.name}}
-              </div>
-              <a
-                href="/dashboard/library/{{library.id}}"
-                class="btn btn-outline-dark shadow my-3 mb-3 rounded m-2 p-1"
-                role="button"
-                style="background-color: #A6B7BE;"
-              >Edit</a>
-              <a
-                role="button"
-                onclick="deleteLibrary({{library.id}})"
-                class="btn btn-outline-dark shadow text-white my-3 mb-3 rounded m-2 p-1"
-                style="background-color: red;"
-              >Delete</a>
-            </li>
-          {{/each}}
-        </ul>
+      <a href="/dashboard/library" role="button" class="btn-success btn p-2 shadow rounded mt-4">Create a library</a>
+      <ul class="list-group m-3 g-1">
+        {{#each user.libraries as |library|}}
+        <li class="list-group-item d-flex justify-content-between m-2 shadow rounded" style="background-color: #F5EBD7">
+          <div class="ms-2 me-auto">
+            {{library.name}}
+          </div>
+          <a href="/dashboard/library/{{library.id}}" class="btn btn-outline-dark shadow my-3 mb-3 rounded m-2 p-1"
+            role="button" style="background-color: #A6B7BE;">Edit</a>
+          <a role="button" onclick="deleteLibrary({{library.id}})"
+            class="btn btn-outline-dark shadow text-white my-3 mb-3 rounded m-2 p-1"
+            style="background-color: red;">Delete</a>
+        </li>
+        {{/each}}
+      </ul>
 
       {{else}}
-        <h4>You do not have any libraries! Click the button below to create a
-          personlized library.</h4>
+      <h4 class="pt-4">You do not have any libraries! Click the button below to create a
+        personlized library.</h4>
+      <a href="/dashboard/library" role="button" class="btn-success btn p-2 shadow rounded mt-4">Create a Library</a>
 
       {{/if}}
     </div>
