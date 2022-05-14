@@ -1,45 +1,52 @@
-<div class="container-fluid">
-    <div class="row justify-content-center form-group">
-        <div class="col-5 m-2 border rounded">
-            <form class="form update-library">
-                <h3>If you would like to update your Library please update the following information. A 5 digit zip is
-                    required to update your library.</h3>
-                <label for="exampleFormControlInput1">Library Name</label>
-                <input type="text" class="form-control" id="name" value="{{library.name}}">
+<div class="container-fluid bg-dark p-2 bg-opacity-25 shadow mb-5 rounded">
+    <div style="cursive; background-color: rgba(245, 235, 215, 0.1);">
+        <div class="row justify-content-center form-group">
+            <div class="col m-2 rounded" style="font-family: 'Comfortaa', cursive;">
+                <h4 class="text-center">To update your Library please provide the following info.</h4>
                 <br>
-                <label for="exampleFormControlInput1">Library Address</label>
-                <input type="text" class="form-control" id="address" value="{{library.address}}">
-                <br>
-                <label for="exampleFormControlInput1">Library Zip Code (5 Digits)</label>
-                <input type="number" class="form-control" id="zipcode" value="{{library.zip_code}}">
-                <br>
-                <div class="col-6 m-2">
-                    <button type="submit" class="border rounded btn-primary m-2">Update Library</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="col-5 m-2 border rounded">
-            <form class="form new-book">
-                <h3>In order to add a new book to your library, please enter the book's ISBN number (10 or 13-digit).
-                </h3>
-                <label for="exampleFormControlInput1">ISBN</label>
-                <input type="text" class="form-control" id="isbn" placeholder="9780553288209">
-
-                <div class="col-6 m-2 border rounded">
-                    <button type="submit" class="m-1">Add new book</button>
-                </div>
-                <div class="border rounded container-fluid w-95 h-10 p-2">
-                    <ul class="list-group">
-                        {{#each library.books as |book|}}
-                        {{> book-list}}
-                        {{/each}}
-                    </ul>
-                </div>
-            </form>
+                <h6 class="text-center"><em>A 5 digit zip code is required to update your library.</em></h6>
+                <form class="form update-library" style="font-family: 'Comfortaa', cursive;">
+                    <label for="exampleFormControlInput1">Library Name</label>
+                    <input type="text" class="form-control" id="name" value="{{library.name}}">
+                    <br>
+                    <label for="exampleFormControlInput1">Library Address</label>
+                    <input type="text" class="form-control" id="address" value="{{library.address}}">
+                    <br>
+                    <label for="exampleFormControlInput1">Library Zip Code (5 Digits)</label>
+                    <input type="number" class="form-control" id="zipcode" value="{{library.zip_code}}">
+                    <br>
+                    <div class="row m-2 rounded text-center">
+                        <button type="submit" class="btn btn-outline-dark shadow my-3 mb-3 rounded m-2 p-1" style="background-color: #A6B7BE;">Update Library</button>
+                    </div>
+                </form>
+            </div>
+    
+            <div class="col m-2 rounded align-middle" style="font-family: 'Comfortaa', cursive;">
+                <h4 class="text-center">In order to add a new book to your library, please enter the ISBN number (10 or 13 digits).</h4>
+                <form class="form new-book">
+                    <label for="exampleFormControlInput1">ISBN</label>
+                    <input type="text" class="form-control" id="isbn" placeholder="9780553288209">
+    
+                    <div class="row m-2 rounded text-center">
+                        <button type="submit" class="btn btn-outline-dark shadow my-3 mb-3 rounded m-2 p-1" style="background-color: #A6B7BE;">Add new book</button>
+                    </div>
+                </form>
+            </div>
+    
+            <div class="col m-2 rounded" style="font-family: 'Comfortaa', cursive;">
+                    <h4 class="pt-2 text-center">Delete A Book</h4>
+                    <div class="rounded container-fluid w-95 h-10 p-2">
+                        <ul class="list-group shadow rounded">
+                            {{#each library.books as |book|}}
+                            {{> book-list}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
-<script src="/js/updatelibrary.js"></script>
+<script src="/js/updateLibrary.js"></script>
 <script src="/js/bookFunctions.js"></script>

@@ -1,17 +1,19 @@
-<div class="card book-card rounded border m-3" style="width: 20rem;">
-  <img src="{{artwork}}" class="card-img-top" alt="{{title}} Cover Art">
-  <div class="card-body">
+<div class="card col-4 book-card rounded border m-3 text-dark shadow mb-5" style="width: 20rem; background-color: #F5EBD7;">
+  <img src="{{artwork}}" class="card-img-top p-3 h-75" alt="{{title}} Cover Art">
+  <div class="card-body text-dark p-3">
     <h5 class="card-title">{{title}}</h5>
     <h6 class="card-subtitle mb-2 text-muted">{{author}}</h6>
-    {{#if description}}
+    {{!-- {{#if description}}
     <p class="card-text">{{description}}</p>
-    {{/if}}
+    {{/if}} --}}
     {{#if logged_in}}
-    <div class="card-footer">
-      <a onclick="checkOutBook({{id}}" class="btn btn-primary">Check Out Book</a>
+    <div class="card-footer col d-flex justify-content-center align-bottom">
+      {{#if librarybook.checked_out}}
+      <p>Book is out on loan. Please try back later.</p>
+      {{else}}
+      <a onclick="checkOutBook({{librarybook.id}})" role="button" class="btn btn-outline-dark shadow mx-3 rounded mh-10" style="background-color: #A6B7BE;">Check Out Book</a>
+      {{/if}}
     </div>
     {{/if}}
   </div>
 </div>
-
-<script src="/js/checkoutBook.js"></script>

@@ -1,10 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const { bookApi } = require('../utils/bookApi.js');
+const { bookApi, bulkApi } = require('../utils/bookApi.js');
 
 class Book extends Model { }
 
-// Do we need title, author, genre, and artwork? Can these be pulled directly from the API as needed and only keep the isbn to use to create the API pull?
 Book.init(
     {
         id: {
@@ -55,14 +54,10 @@ Book.init(
     {
         hooks: {
             async beforeBulkCreate(newBookData) {
-                // let bookInfo = await bookApi(newBookData);
-                // newBookData[0].title = bookInfo.title;
-                // newBookData[0].author = bookInfo.author;
-                // newBookData[0].artwork = bookInfo.artwork;
-                return await bookApi(newBookData);
+                return await bulkApi(newBookData);
             },
             async beforeCreate(newBookData) {
-                // newBookData = await bookApi(newBookData);
+                console.log("WE HIT BEFORE CREATE:", '\n', newBookData);
                 return await bookApi(newBookData);
             },
         },

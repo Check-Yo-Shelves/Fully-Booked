@@ -41,20 +41,46 @@ router.get('/:id', async (req, res) => {
 // This route allows both checking libraryBook both in and out.
 router.put('/:id', async (req, res) => {
     try {
-        // Update the libraryBook that is referenced by id with req.body parameters (which are user_id & checked_out property)
-        // Logic for this will go in js folder.
         console.log(req.session, req.params);
-        const libraryBookData = await LibraryBook.update(req.body, {
-            where: {
-                book_id: req.params.id,
-                user_id: req.session.user_id,
-            },
-        });
+        let libraryBookData
+        if (req.body.checked_out) {
+            req.body.user_id = req.session.user_id;
+            libraryBookData = await LibraryBook.update(req.body, {
+                where: {
+                    id: req.params.id,
+                },
+            });
+        } else {
+            req.body.user_id = null;
+            libraryBookData = await LibraryBook.update(req.body, {
+                where: {
+                    book_id: req.params.id,
+                    user_id: req.session.user_id,
+                },
+            });
+        }
 
         if (!libraryBookData) {
             res.status(404).json({ message: `No library book found with that id!` });
             return;
         }
+
+        res.status(200).json(libraryBookData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.post('/', async (req, res) => {
+    try {
+        console.log(req.session, req.params);
+        let newBook = {
+            user_id: req.session.user_id,
+            library_id: req.body.library_id,
+            book_id: req.body.book_id,
+            checked_out: false,
+        }
+        const libraryBookData = await LibraryBook.create(newBook);
 
         res.status(200).json(libraryBookData);
     } catch (err) {

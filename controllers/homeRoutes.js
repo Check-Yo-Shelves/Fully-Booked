@@ -65,7 +65,6 @@ router.get("/libraryinfo/:id", async (req, res) => {
 
     const library = libraryData.get({ plain: true });
     console.log(library);
-    // Add
 
     res.render("libraryinfo", { library, logged_in: req.session.logged_in });
   } catch (err) {
